@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 public class PartGrade implements Serializable{
 	private int gradeId;//成绩id
-	private double partgrade;//指标/部分成绩
+	private double partgrade;//部分成绩
 	private String partexplain;//成绩打分说明
 	private int partflag;//指标分类标识
 	private int itemId;

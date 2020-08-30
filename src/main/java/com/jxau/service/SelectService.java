@@ -83,4 +83,8 @@ public class SelectService {
     public static String getItemFilePath(int itemId) {
         return new ItemDaoImpl().getItemsPath(itemId);
     }
+
+    public static String selectGameId(String itemsId) {
+        return  new GameDaoImpl().getGameIdByItemId(itemsId);
+    }
 }

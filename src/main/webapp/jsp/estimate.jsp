@@ -43,7 +43,6 @@
             height: 180px;
         }
 	</style>
-
   </head>
   <body>
 
@@ -104,7 +103,7 @@
             </div>
 
         </div>
-        <form action="/ReviewSystem/Estimate_submit_servlet?id=${id}&gameid=${g.gameId}&userid=${user_id}" method="post">
+        <form action="/ReviewSystem/Estimate_submit_servlet" method="post">
 	        <div class="col-md-1"></div>
             <div class="col-md-9 project-info well well-lg">
                 <div class="itemInfo">
@@ -144,13 +143,13 @@
                                 <input type="hidden" name = "partFlag" value="${part.id}">
                                 <input type="hidden" name = "itemId" value="${items.itemId}">
                                 <td><span>${part.explain}</span></td>
-                                <td><span>${part.grade}</span></td>
+                                <td><span><input type="text" value="${part.grade}" name="hid" readonly="readonly"/></span></td>
                                 <td><input type="text" name="grade" value="" height="10"></td>
                                 <td><input type="text" name="partExplain" value="" height="10"></td>
 			                </tr>
 		                </c:forEach>
                         <div class="text-center">
-                            <input onclick="submitPart()" class="btn btn-info" value="提交">
+                            <input type="submit" class="btn btn-info" value="提交">
                             <a href="Select_all_work_servlet" class="btn btn-default">取消</a>
                         </div>
 	                </tbody>

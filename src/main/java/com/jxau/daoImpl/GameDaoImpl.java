@@ -182,4 +182,27 @@ public class GameDaoImpl implements GamesDao {
         return false;
     }
 
+    public String getGameIdByItemId(String itemsId) {
+        String id = "";
+        //获取连接
+        Connection connection = new MySQLConnection().getConnection();
+
+        String sql = "select gameId, userId from items where itemId=1";
+
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+
+            ResultSet rs = pstmt.executeQuery();
+            if(rs.next()){
+                id = rs.getInt("gameId") + " " + rs.getInt("userId");
+            }
+            rs.close();
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            MySQLConnection.close(connection);
+        }
+        return id;
+    }
 }

@@ -4,6 +4,7 @@ import com.jxau.daoImpl.GradeDao;
 import com.jxau.domain.Grade;
 import com.jxau.domain.PartGrade;
 import com.jxau.domain.User;
+import com.jxau.service.AddService;
 
 import java.io.IOException;
 
@@ -22,22 +23,22 @@ public class Estimate_submit_servlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		String gameId = request.getParameter("gameid");
-		String userId = request.getParameter("userid");
-		String id = request.getParameter("id");
-		String[] partflags = request.getParameterValues("partflag");
+		String userId = user.getUserId();
+		String[] partflags = request.getParameterValues("partFlag");
 		String[] grades = request.getParameterValues("grade");
-		String[] partexplains = request.getParameterValues("partexplain");
-		double d = 0;
-		for(int i=0;i<partexplains.length;i++) {
-			
-				d = d + Double.parseDouble(grades[i]);
-				PartGrade p = new PartGrade(0, Double.parseDouble(grades[i]), partexplains[i], Integer.parseInt(partflags[i]),Integer.parseInt(user.getUserId()), Integer.parseInt(id));
+		String[] partexplains = request.getParameterValues("partExplain");
+		String[] hid = request.getParameterValues("hid");
+		for(int i = 0; i < hid.length; i++){
+			if(Double.parseDouble(grades[i]) > Double.parseDouble(hid[i])){
+				response.getWriter().print("<script language='javascript'>alert('分数不能超过满分');window.location.href='SelectItemsServlet';</script>");
+				return;
+			}
 		}
-		Grade g =new Grade(Integer.parseInt(id), d, Integer.parseInt(userId), 0, Integer.parseInt(gameId), Integer.parseInt(user.getUserId()));
-		System.out.println(d);
-		GradeDao.insert(g);
-		response.sendRedirect("Select_all_work_servlet");
+		String itemsId = request.getParameterValues("itemId")[0];
+		AddService.addGrade(userId, partexplains,partflags,grades, itemsId);
+
+		response.getWriter().print("<script language='javascript'>alert('评分成功');window.location.href='SelectItemsServlet';</script>");
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

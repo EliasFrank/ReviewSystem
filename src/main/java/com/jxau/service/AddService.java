@@ -8,6 +8,7 @@ import com.jxau.domain.*;
 import com.jxau.myUtils.MySQLConnection;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 public class AddService {
     public static void addExpert(int id){
@@ -61,5 +62,28 @@ public class AddService {
 
     public static void addApplyGame(String userId, int gameId) {
         new AccountDaoImpl().addUserApply(Integer.parseInt(userId), gameId);
+    }
+
+    public static void addGrade(String userId, String[] partexplains, String[] partflags, String[] grades, String itemsId) {
+        ArrayList<PartGrade> partGrades = new ArrayList<>();
+        double totalGrade = 0;
+        for(int i = 0; i < grades.length; i++){
+            PartGrade p = new PartGrade();
+            p.setExpertId(Integer.parseInt(userId));
+            p.setItemId(Integer.parseInt(itemsId));
+            p.setPartexplain(partexplains[i]);
+            p.setPartgrade(Double.parseDouble(grades[i]));
+            p.setPartflag(Integer.parseInt(partflags[i]));
+
+            totalGrade += Double.parseDouble(grades[i]);
+        }
+        String[] info = SelectService.selectGameId(itemsId).split(" ");
+        Grade grade = new Grade();
+        grade.setExpertId(Integer.parseInt(userId));
+        grade.setGameId(Integer.parseInt(info[0]));
+        grade.setItemId(Integer.parseInt(itemsId));
+        grade.setTotalGrade(totalGrade);
+        grade.setUserId(Integer.parseInt(info[1]));
+
     }
 }
