@@ -142,8 +142,8 @@ public class ItemDaoImpl {
         //获取连接
         Connection connection = new MySQLConnection().getConnection();
 
-        String sql = "select ci.* from check_item ci, `check`c\n" +
-                "where c.itemId = ci.itemId\n" +
+        String sql = "select ci.* from check_item ci, `check` c " +
+                "where c.itemId = ci.itemId " +
                 "and c.userId = ?";
 
         try {
@@ -230,5 +230,24 @@ public class ItemDaoImpl {
             MySQLConnection.close(connection);
         }
         return annex;
+    }
+
+    public void setItemFlag(int userId, int itemId) throws SQLException {
+        Connection connection = new MySQLConnection().getConnection();
+        String sql = "update `check` set isCheck=1 where userId=? and itemId=?";
+
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+
+            pstmt.setInt(1, userId);
+            pstmt.setInt(2, itemId);
+
+            pstmt.execute();
+            pstmt.close();
+        } catch (SQLException e) {
+            throw  e;
+        }finally {
+            MySQLConnection.close(connection);
+        }
     }
 }

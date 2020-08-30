@@ -1,13 +1,12 @@
 package com.jxau.service;
 
 import com.jxau.dao.GamesDao;
-import com.jxau.daoImpl.AccountDaoImpl;
-import com.jxau.daoImpl.GameDaoImpl;
-import com.jxau.daoImpl.ItemDaoImpl;
+import com.jxau.daoImpl.*;
 import com.jxau.domain.*;
 import com.jxau.myUtils.MySQLConnection;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AddService {
@@ -76,6 +75,7 @@ public class AddService {
             p.setPartflag(Integer.parseInt(partflags[i]));
 
             totalGrade += Double.parseDouble(grades[i]);
+            partGrades.add(p);
         }
         String[] info = SelectService.selectGameId(itemsId).split(" ");
         Grade grade = new Grade();
@@ -85,5 +85,28 @@ public class AddService {
         grade.setTotalGrade(totalGrade);
         grade.setUserId(Integer.parseInt(info[1]));
 
+
+        Connection connection = MySQLConnection.getConnection();
+        GradesImpl gradesImpl = new GradesImpl();
+        ItemDaoImpl itemImpl = new ItemDaoImpl();
+        try{
+            connection.setAutoCommit(false);
+
+            gradesImpl.addPartGrades(partGrades, connection);
+            gradesImpl.addTotalGrades(grade, connection);
+            //itemImpl.setItemFlag(grade.getExpertId(), grade.getItemId());
+
+            connection.commit();
+
+        }catch (Exception e){
+            e.printStackTrace();
+            try {
+                connection.rollback();
+            }catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }finally {
+            MySQLConnection.close(connection);
+        }
     }
 }

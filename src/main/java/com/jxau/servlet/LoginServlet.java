@@ -21,12 +21,14 @@ public class LoginServlet extends HttpServlet {
         if(user == null){
             response.getWriter().print("<script language='javascript'>alert('账号密码错误，请重新填写');window.location.href='jsp/login.jsp';</script>");
         }
-        if(user.getUserflag() == 2 || user.getUserflag() == 1){
-            request.getSession().setAttribute("user", user);
+
+        request.getSession().setAttribute("user", user);
+        if(user.getUserflag() == 2){
             request.getRequestDispatcher("/jsp/userPage.jsp").forward(request, response);
         }else if(user.getUserflag() == 0){
-            request.getSession().setAttribute("user", user);
             request.getRequestDispatcher("/jsp/admin.jsp").forward(request, response);
+        }else if(user.getUserflag() == 1){
+            request.getRequestDispatcher("/SelectItemsServlet").forward(request, response);
         }
     }
     private User getUser(HttpServletRequest request){
