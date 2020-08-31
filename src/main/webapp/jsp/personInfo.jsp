@@ -185,14 +185,7 @@
 									           </table>
 							        </div>
                             <div class="mycreated">
-                                <ul class="project-list list-unstyled">
-                                    <li class="project-created btn btn-default">
-                                        <a id="createNew" href="addProject.jsp">
-                                            <div class="plus">+</div>
-                                            <p>创建新项目</p>
-                                        </a>
-                                    </li>
-                                </ul>
+
                             </div>
                         </div>
                     </div>
