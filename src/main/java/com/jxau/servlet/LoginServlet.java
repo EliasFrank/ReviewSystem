@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
         }else if(user.getUserflag() == 0){
             request.getRequestDispatcher("/jsp/admin.jsp").forward(request, response);
         }else if(user.getUserflag() == 1){
-            request.getRequestDispatcher("/SelectItemsServlet").forward(request, response);
+            request.getRequestDispatcher("/jsp/expertSelect.jsp").forward(request, response);
         }
     }
     private User getUser(HttpServletRequest request){
