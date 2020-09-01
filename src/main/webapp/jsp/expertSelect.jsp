@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <html>
 <c:if test="${user.userId != 1}">
     <a href="/ReviewSystem/jsp/login.jsp">您的权限不够，请以专家账号登录</a>
