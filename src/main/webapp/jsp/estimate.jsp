@@ -3,6 +3,10 @@
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
+<c:if test="${user.userId != 1}">
+    <a href="/ReviewSystem/jsp/login.jsp">您的权限不够，请以专家账号登录</a>
+</c:if>
+<c:if test="${user.userId == 1}">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -180,4 +184,5 @@
     <script src="/ReviewSystem/js/estimate.js"></script>
     <!-- <script src="js/scripts.js"></script> -->
   </body>
+</c:if>
 </html>

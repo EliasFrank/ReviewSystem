@@ -1,6 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8" isELIgnored="false" language="java"%>
 <!DOCTYPE html>
 <html lang="en">
+<c:if test="${user.userId == null}">
+	<a href="/ReviewSystem/jsp/login.jsp">请登录</a>
+</c:if>
+<c:if test="${user.userId != null}">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -195,4 +199,5 @@
     <script src="/ReviewSystem/js/userPage.js"></script>
     <!-- <script src="js/scripts.js"></script> -->
   </body>
+</c:if>
 </html>

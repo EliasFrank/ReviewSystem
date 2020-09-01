@@ -33,5 +33,5 @@
 <input type="button" onclick="exportRank()" value="导出结果">
 
 </body>
-<script src="../js/ranks.js"></script>
+<script src="/ReviewSystem/js/ranks.js"></script>
 </html>

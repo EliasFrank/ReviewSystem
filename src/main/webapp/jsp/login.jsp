@@ -84,9 +84,9 @@
     </div>
 </body>
  
-<script src="../js/jquery-3.4.1.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/login.js"></script>
+<script src="/ReviewSystem/js/jquery-3.4.1.min.js"></script>
+<script src="/ReviewSystem/js/bootstrap.min.js"></script>
+<script src="/ReviewSystem/js/login.js"></script>
 
 
 </html>
