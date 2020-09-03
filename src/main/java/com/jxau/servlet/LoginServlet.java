@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("/jsp/admin.jsp").forward(request, response);
             System.out.println("0");
         }else if(user.getUserflag() == 1){
-            request.getRequestDispatcher("/jsp/expertSelect.jsp.jsp").forward(request, response);
+            request.getRequestDispatcher("/jsp/expertSelect.jsp").forward(request, response);
             System.out.println("1");
         }else{
             System.out.println("else");

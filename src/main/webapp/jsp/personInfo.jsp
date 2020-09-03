@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
-${user.userId}
 <c:if test="${user.userflag == null}">
     <a href="/ReviewSystem/jsp/login.jsp">请登录</a>
 </c:if>

@@ -2,7 +2,6 @@
 <%@ page contentType="text/html; charset=UTF-8" isELIgnored="false" language="java"%>
 <!DOCTYPE html>
 <html lang="en">
-${user.userId}
 <c:if test="${user.userflag != 0}">
     <a href="/ReviewSystem/jsp/login.jsp">您的权限不够，请以管理员账号登录</a>
 </c:if>
