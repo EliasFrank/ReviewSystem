@@ -2,10 +2,11 @@
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
-<c:if test="${user.userId == null}">
+${user.userId}
+<c:if test="${user == null}">
 	<a href="/ReviewSystem/jsp/login.jsp">请登录</a>
 </c:if>
-<c:if test="${user.userId != null}">
+<c:if test="${user != null}">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

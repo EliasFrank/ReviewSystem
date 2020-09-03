@@ -42,7 +42,7 @@ public class UserListener implements ServletContextListener,
         user.setUserId("1");
         user.setPassword("1");
         user.setNumber("1");
-        user.setUserflag(1);
+        user.setUserflag(0);
         user.setEmail("1");
         user.setTel("1");
         session.setAttribute("user", user);*/

@@ -11,9 +11,7 @@ function login(){
         alert("密码长度错误");
         return ;
     }
-    if(!checkImg(pic)){
-        return;
-    }
+
     var login = document.getElementById("loginForm");
     login.action = "/ReviewSystem/LoginServlet";
     login.submit();
