@@ -1,3 +1,8 @@
+function storeGame() {
+    var gameForm = document.getElementById("gameForm");
+    gameForm.action="/ReviewSystem/StoreGameServlet";
+    gameForm.submit();
+}
 function addGame() {
    var type = document.getElementById("type").value;
     if(type.length > 10 || myTrim(type) == ""){

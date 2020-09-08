@@ -109,4 +109,10 @@ public class AddService {
             MySQLConnection.close(connection);
         }
     }
+
+    public static void storeGame(Game game, Part[] part) {
+        System.out.println("暂存成功");
+        System.out.println(game);
+        System.out.println(part);
+    }
 }

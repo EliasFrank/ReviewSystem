@@ -182,6 +182,7 @@
         
     </div>
     <div class="text-center">
+        <a class="btn btn-info" onclick = "storeGame();">暂存(文件不存暂存)</a>
         <a class="btn btn-info" onclick="addGame();">发布</a>
         <a href="<c:url value='/jsp/admin.jsp'/>" class="btn btn-default">取消</a>
     </div>

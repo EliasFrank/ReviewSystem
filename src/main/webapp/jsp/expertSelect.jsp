@@ -8,10 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
-
-
 <html>
-
 <head>
     <title>专家选择界面</title>
 </head>
@@ -47,8 +44,6 @@
                         <h2>登录</h2>
                     </center>
                     <br>
-                    
-                    
                             <!-- 下面这个我不知道怎么改，黄雷你待会改一下 -->
                             <!-- ${user.userflag} -->
                             <c:if test="${user.userflag == 1}">
@@ -63,13 +58,8 @@
                             <!-- <label for="my-input">Text</label> -->
                     </form>
                 </div>
-                
             </div>
             <div class="col-md-3"></div>
     </div>
-
 </body>
-
-
-
 </html>
