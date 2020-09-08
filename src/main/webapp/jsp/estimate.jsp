@@ -107,10 +107,9 @@
             </div>
 
         </div>
-        <form action="/ReviewSystem/Estimate_submit_servlet" method="post">
 	        <div class="col-md-1"></div>
-            <div class="col-md-9 project-info well well-lg">
-                <div class="itemInfo">
+            <div class="col-md-9 ">
+                <div class="itemInfo project-info well well-lg">
                     <table class="table table-hover ">
                         <thead>
                         <tr>
@@ -129,56 +128,56 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div class="col-md-10 project-info well well-lg">
-	           <div class="itemInfo">
-	               <table class="table table-hover ">
-	                <thead>
-	                    <tr>
-	                        <td><label>评分标准</label></td>
-	                        <td><label>满分</label></td>
-	                        <td><label>分数</label></td>
-	                        <td><label>评分原因</label></td>
-	                    </tr>
-	                </thead>
-	                <tbody>
-	                	<c:forEach items="${parts}" var="part">
-		                    <tr>
-                                <input type="hidden" name = "partFlag" value="${part.id}">
-                                <input type="hidden" name = "itemId" value="${items.itemId}">
-                                <td><span>${part.explain}</span></td>
-                                <td><span><input type="text" value="${part.grade}" name="hid" readonly="readonly"/></span></td>
-                                <td><input type="text" name="grade" value="" height="10"></td>
-                                <td><input type="text" name="partExplain" value="" height="10"></td>
-			                </tr>
-		                </c:forEach>
-                        <div class="text-center">
-                            <input type="submit" class="btn btn-info" value="提交">
-                            <a href="Select_all_work_servlet" class="btn btn-default">取消</a>
-                        </div>
-	                </tbody>
-	           </table>
-	           </div>
-	        </div>   
-	        <div class="col-md-1"></div> 
-	   	
-	    <div class="navbar navbar-fixed-bottom">
-	        <div class="container">
-	            <div class="text-center">
-	                <br>
-	                <ul class="list-inline">
-	                    <li>@ JXAU</li>
-	                    <li>|</li>
-	                    <li><a href="#" class="text-danger">使用条款</a></li>
-	                    <li>|</li>
-	                    <li><a href="#" class="text-danger">隐私政策</a></li>
-	                </ul>
-	            </div>
-	        </div>
-	    </div>
+            <form action="/ReviewSystem/Estimate_submit_servlet" method="post">
+                <div class="project-info well well-lg">
+                    <table class="table table-hover ">
+                         <thead>
+                             <tr>
+                                 <td><label>评分标准</label></td>
+                                 <td><label>满分</label></td>
+                                 <td><label>分数</label></td>
+                                 <td><label>评分原因</label></td>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             <c:forEach items="${parts}" var="part">
+                                 <tr>
+                                     <input type="hidden" name = "partFlag" value="${part.id}">
+                                     <input type="hidden" name = "itemId" value="${items.itemId}">
+                                     <td><span>${part.explain}</span></td>
+                                     <td><span><input type="text" value="${part.grade}" name="hid" readonly="readonly"/></span></td>
+                                     <td><input type="text" name="grade" value="" height="10"></td>
+                                     <td><input type="text" name="partExplain" value="" height="10"></td>
+                                 </tr>
+                             </c:forEach>
+                             
+                         </tbody>
+                    </table>
+                </div>  
+            </form>
+            <div class="col-md-2"></div>
 
-	   </form>      
-	</div>
+        <div class="text-right">
+            <input type="submit" class="btn btn-info" value="提交">
+            <a href="Select_all_work_servlet" class="btn btn-default">取消</a>
+        </div>
+     
+
+    </div>
+    <div class="navbar navbar-fixed-bottom">
+        <div class="container">
+            <div class="text-center">
+                <br>
+                <ul class="list-inline">
+                    <li>@ JXAU</li>
+                    <li>|</li>
+                    <li><a href="#" class="text-danger">使用条款</a></li>
+                    <li>|</li>
+                    <li><a href="#" class="text-danger">隐私政策</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <script src="/ReviewSystem/js/jquery-3.4.1.min.js"></script>
     <script src="/ReviewSystem/js/bootstrap.min.js"></script>
     <script src="/ReviewSystem/js/estimate.js"></script>
