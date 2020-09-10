@@ -120,35 +120,36 @@
                         <tr>
                             <td><span class="star">*</span></td>
                             <td><span>设置项目类型</span></td>
-                            <td><input type="text" class="form-control" id="type" name="type"></td>
+                            <td><input type="text" class="form-control" id="type" name="type" value="${game.type}"></td>
                             <td><small>设置本次比赛的项目类型</small></td>
                         </tr>
                         <tr>
                             <td><span class="star">*</span></td>
                             <td><span>设置项目名称</span></td>
-                            <td><input type="text" class="form-control" id="name" name="name"></td>
+                            <td><input type="text" class="form-control" id="name" name="name" value="${game.gameName}"></td>
                             <td><small>设置本次比赛的项目名称</small></td>
                         </tr>
                         <tr>
                             <td><span class="star">*</span></td>
                             <td><span>设置欢迎标语</span></td>
-                            <td><input type="text" class="form-control" id="welcome" name="welcome"></td>
+                            <td><input type="text" class="form-control" id="welcome" name="welcome" value="${game.welcome}"></td>
                             <td><small>设置本次比赛的欢迎标语</small></td>
                         </tr>
                         <tr name="">
                             <td><span class="star">*</span></td>
                             <td><span>项目评分标准（不超过十项）</span></td>
-                            <td><input type="text" class="form-control" placeholder="评分标准名" name="standard" id="standard1"></td>
-                            <td><input type="text" class="form-control" placeholder="分数占比" name="standardGrade" id="standardGrade1"></td>
+                            <c:forEach items="${parts}" var="part">
+                                <td><input type="text" class="form-control" placeholder="评分标准名" name="standard" id="standard1" value="${part.explain}"></td>
+                                <td><input type="text" class="form-control" placeholder="分数占比" name="standardGrade" id="standardGrade1" value="${part.grade}"></td>
+                            </c:forEach>
                             <td><button class="btn btn-info" type="button" id="add">添加</button><button class="btn btn-danger" type="button" id="del">删除</button></td>
-
                         </tr>
                     </tbody>
                     <tbody class="">
                         <tr>
                             <td><span>*</span></td>
                             <td><span>起始日期</span></td>
-                            <td class="date input-group" id="start-date"><input type="text" class="form-control" id="startTime" name="startTime"><span class="input-group-addon">
+                            <td class="date input-group" id="start-date"><input type="text" class="form-control" id="startTime" name="startTime" value="${game.startTime}"><span class="input-group-addon">
                                 <i class="glyphicon glyphicon-calendar"></i>
                             </span>  </td>
                             <td><span></span></td>
@@ -156,7 +157,7 @@
                         <tr>
                             <td><span>*</span></td>
                             <td><span>终止日期</span></td>
-                            <td class="date input-group" id="end-date"><input type="text" class="form-control" id="endTime" name="endTime"><span class="input-group-addon">
+                            <td class="date input-group" id="end-date"><input type="text" class="form-control" id="endTime" name="endTime" value="${game.endTime}"><span class="input-group-addon">
                                 <i class="glyphicon glyphicon-calendar"></i>  
                             </span>  </td>
                             <td><span></span></td>
@@ -164,7 +165,7 @@
                         <tr>
                             <td><span class="star">*</span></td>
                             <td><span>申报说明</span></td>
-                            <td><textarea name="introduce" cols="80" rows="10" id="introduce" placeholder="对项目的描述，项目背景，用户群体等。"></textarea></td>
+                            <td><textarea name="introduce" cols="80" rows="10" id="introduce" placeholder="(对项目的描述，项目背景，用户群体等)" >${game.introduction}</textarea></td>
                             <td><small></small></td>
                         </tr>
                         <tr>

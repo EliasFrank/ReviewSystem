@@ -133,7 +133,7 @@
                             <div class="mycreated">
                                 <ul class="project-list list-unstyled">
                                     <li class="project-created btn btn-default">
-                                        <a id="createNew" href="jsp/createRules.jsp">
+                                        <a id="createNew" href="/ReviewSystem/GetStoreServlet">
                                             <div class="plus">+</div>
                                             <p>创建项目</p>
                                         </a>

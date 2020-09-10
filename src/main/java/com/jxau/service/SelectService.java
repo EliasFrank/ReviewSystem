@@ -87,4 +87,12 @@ public class SelectService {
     public static String selectGameId(String itemsId) {
         return  new GameDaoImpl().getGameIdByItemId(itemsId);
     }
+
+    public static Game getStoreGame(String userId) {
+        return  new GameDaoImpl().getStoreGam(userId);
+    }
+
+    public static ArrayList<Part> getStoreParts(int gameId) {
+       return new GameDaoImpl().getStoreParts(gameId);
+    }
 }

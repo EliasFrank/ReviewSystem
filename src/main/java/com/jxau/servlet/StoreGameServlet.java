@@ -2,6 +2,7 @@ package com.jxau.servlet;
 
 import com.jxau.domain.Game;
 import com.jxau.domain.Part;
+import com.jxau.domain.User;
 import com.jxau.service.AddService;
 import com.jxau.service.SelectService;
 import org.apache.commons.fileupload.FileItem;
@@ -26,6 +27,8 @@ public class StoreGameServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
+        User user = (User) request.getSession().getAttribute("user");
+        String userId = user.getUserId();
         Game game = new Game();
 
         HashMap<String, String> map = new HashMap<String, String>();
@@ -61,20 +64,23 @@ public class StoreGameServlet extends HttpServlet {
         for(int i = 0; i < part.length; i++){
             part[i] = new Part();
             part[i].setExplain(standards.get(i));
-            part[i].setGrade(Double.parseDouble(standardGrades.get(i)));
+            if (!"".equals(standardGrades.get(i)))
+                part[i].setGrade(Double.parseDouble(standardGrades.get(i)));
             part[i].setGameId(id);
         }
         game.setGameName(map.get("name"));
         game.setType(map.get("type"));
         game.setAnnex(map.get("annex"));
-        game.setEndTime(Date.valueOf(map.get("endTime")));
-        game.setStartTime(Date.valueOf(map.get("startTime")));
+        if (!"".equals(map.get("endTime")))
+            game.setEndTime(Date.valueOf(map.get("endTime")));
+        if (!"".equals(map.get("startTime")))
+            game.setStartTime(Date.valueOf(map.get("startTime")));
         game.setIntroduction(map.get("introduce"));
         game.setWelcome(map.get("welcome"));
         game.setGameId(id);
-        AddService.storeGame(game, part);
+        AddService.storeGame(game, part, userId);
 
-        response.getWriter().print("<script language='javascript'>alert('创建项目成功');window.location.href='jsp/admin.jsp';</script>");
+        response.getWriter().print("<script language='javascript'>alert('暂存成功');window.location.href='jsp/admin.jsp';</script>");
 
     }
 

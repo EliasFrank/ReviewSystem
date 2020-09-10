@@ -110,9 +110,25 @@ public class AddService {
         }
     }
 
-    public static void storeGame(Game game, Part[] part) {
-        System.out.println("暂存成功");
-        System.out.println(game);
-        System.out.println(part);
+    public static void storeGame(Game game, Part[] parts, String userId) {
+        Connection con = MySQLConnection.getConnection();
+        GamesDao dao = new GameDaoImpl();
+        try{
+            con.setAutoCommit(false);
+
+            dao.storeGame(game, con, userId);
+            dao.storeParts(parts, con);
+
+            con.commit();
+        }catch (Exception e){
+            e.printStackTrace();
+            try{
+                con.rollback();
+            }catch (Exception e1){
+                e1.printStackTrace();
+            }
+        }finally {
+            MySQLConnection.close(con);
+        }
     }
 }
