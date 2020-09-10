@@ -27,17 +27,17 @@ function checkEmail(str){
 
 function checkPwd(value){
     var ptr_digit = /^.*[0-9]+.*$/;
-    var ptr_lowcase = /^.*[a-z]+.*$/;
-    var ptr_upcase = /^.*[A-Z]+.*$/;
+    var ptr_lowcase = /^.*[a-zA-Z]+.*$/;
+    // var ptr_upcase = /^.*[A-Z]+.*$/;
     var ptr_special = /((?=[\x21-\x7e]+)[^A-Za-z0-9])/;
     if(value.length < 8 || value.length > 16) {
         return 1;
       }
-      else if((ptr_digit.test(value) && ptr_lowcase.test(value) && ptr_upcase.test(value) && ptr_special.test(value))
-              || (!ptr_digit.test(value) && ptr_lowcase.test(value) && ptr_upcase.test(value) && ptr_special.test(value))
-              || (ptr_digit.test(value) && !ptr_lowcase.test(value) && ptr_upcase.test(value) && ptr_special.test(value))
-              || (ptr_digit.test(value) && ptr_lowcase.test(value) && !ptr_upcase.test(value) && ptr_special.test(value))
-              || (ptr_digit.test(value) && ptr_lowcase.test(value) && ptr_upcase.test(value) && !ptr_special.test(value))){
+      else if((ptr_digit.test(value) && ptr_lowcase.test(value) && ptr_special.test(value))
+              || (!ptr_digit.test(value) && ptr_lowcase.test(value) && ptr_special.test(value))
+              || (ptr_digit.test(value) && !ptr_lowcase.test(value) && ptr_special.test(value))
+              || (ptr_digit.test(value) && ptr_lowcase.test(value) && ptr_special.test(value))
+              || (ptr_digit.test(value) && ptr_lowcase.test(value) && !ptr_special.test(value))){
        return 3;
       }
       else {
@@ -55,12 +55,12 @@ function checkPwdSame(str1, str2){
 }
 
 function register(){
-    if (!checkEmail(document.getElementById("inputEmail").value)){
-        document.getElementById("emailError").innerHTML="电子邮箱格式错误";
+    if(!checkMobile(document.getElementById("inputTel").value)){
+        document.getElementById("telError").innerHTML = "电话格式错误";
         return;
     }
     else{
-        document.getElementById("emailError").innerHTML="";
+        document.getElementById("telError").innerHTML = "";
     }
     if(!checkUser(document.getElementById("inputName").value)){
         document.getElementById("userError").innerHTML = "用户名格式错误";
@@ -87,13 +87,7 @@ function register(){
     else{
         document.getElementById("sameError").innerHTML = "";
     }
-    if(!checkMobile(document.getElementById("inputTel").value)){
-        document.getElementById("telError").innerHTML = "电话格式错误";
-        return;
-    }
-    else{
-        document.getElementById("telError").innerHTML = "";
-    }
+    
     var name = document.getElementById("RealName").value;
     if(name == null || name.length > 20 || name.length == 0){
         alert("姓名不能为空且不能超过20个字符");

@@ -60,16 +60,16 @@
                         <tbody class="">
                             <tr class="">
                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                <td><span class="">电子邮件地址</span></td>
-                                <td><input id="inputEmail" class="infos form-control" type="email"  name="Email" /> </td>
-                                <td><small>您的电子邮箱可以帮助您找回您的账号信息</small></td>
+                                <td><span class="">电话号码</span></td>
+                                <td><input id="inputTel" class="infos form-control" type="text"  name="Tel" /> </td>
+                                <td><small>您的电话号码可以帮助您找回您的账号信息</small></td>
                             </tr>
                       
                         <tbody>
                             <tr>
                                 <td></td>
                                 <td></td>
-                                <td id="emailError" class="text-danger"></td>
+                                <td id="telError" class="text-danger"></td>
                                 <td></td>
                             </tr>
                         </tbody>
@@ -91,7 +91,7 @@
                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                 <td><span class="">设置密码</span></td>
                                 <td><input id="inputPwd" class="infos form-control" type="password"  name="Password" /> </td>
-                                <td><small>密码必须包含大小写字母和至少 1 个数字</small></td>
+                                <td><small>密码必须包含字母和至少 1 个数字</small></td>
                             </tr>
                             <tbody>
                                 <tr>
@@ -115,7 +115,7 @@
                                     <td></td>
                                 </tr>
                             </tbody>
-                            <tr class="">
+                            <!-- <tr class="">
                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                 <td><span class="">电话</span></td>
                                 <td><input id="inputTel" class="infos form-control" type="text"  name="Tel" /> </td>
@@ -128,7 +128,7 @@
                                     <td id="telError" class="text-danger"></td>
                                     <td></td>
                                 </tr>
-                            </tbody>
+                            </tbody> -->
                             <tr class="">
                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                 <td><span class="">姓名</span></td>

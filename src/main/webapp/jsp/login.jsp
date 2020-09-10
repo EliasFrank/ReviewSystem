@@ -50,12 +50,12 @@
                              <a class="input-group-addon glyphicon glyphicon-exclamation-sign btn btn-link" aria-hidden="true" data-toggle="tooltip" data-placement="left" title="忘记密码" href="forgetPwd.jsp"></a>
                         </div>
                         <br>
-                        <div class="input-group">
+                        <!-- <div class="input-group">
                             <iframe name="hidden" style="display: none;"></iframe>
                                 <input type="tel" id="inputImg" class="form-control well well-lg" placeholder="请输入图形验证码">
                                 <a class="input-group-addon" href="#" id="changeImg" ><canvas id="canvas" width="110" height="35"></canvas></a>
                             
-                        </div>
+                        </div> -->
                         
                         <p id="msg" class="text-center text-danger"></p>
                         <div class="form-group text-center  ">

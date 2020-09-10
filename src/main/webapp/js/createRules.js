@@ -102,13 +102,16 @@ function del(){
     }
     var row = document.getElementById("standard");
     // console.log("row is " + row.childNodes[row.childNodes.length-1]);
+    // alert(row.childNodes);
     var childnode = row.childNodes[row.childNodes.length - 1];
-    // console.log(childnode);
+
     var childnodes = childnode.childNodes;
-    // console.log("childsnodes is " + childnodes.length); 
+    console.log(childnodes);
+    console.log("childsnodes is " + childnodes.length);
     for(var i = 0; i < childnodes.length; i++){
         childnode.removeChild(childnodes[i]);
     }
+
     row.removeChild(childnode);
     n-=1;
 }
