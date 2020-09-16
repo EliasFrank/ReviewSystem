@@ -11,7 +11,9 @@ function login(){
         alert("密码长度错误");
         return ;
     }
-
+    if(checkImg(pic)){
+        return;
+    }
     var login = document.getElementById("loginForm");
     login.action = "/ReviewSystem/LoginServlet";
     login.submit();
@@ -48,7 +50,7 @@ function drawPic(){
   ctx.fillStyle = randomColor(180,240); //颜色若太深可能导致看不清
   ctx.fillRect(0,0,width,height);
   /**绘制文字**/
-  var str = 'ABCEFGHJKLMNPQRSTWXY123456789';
+  var str = 'ABCEFGHJKLMNPQRSTWXY';
   var ans = '';
   for(var i=0; i<4; i++){
     var txt = str[randomNum(0,str.length)];
@@ -75,7 +77,7 @@ function drawPic(){
     ctx.stroke();
   }
   /**绘制干扰点**/
-  for(var i=0; i<20; i++){
+  for(var i=0; i<10; i++){
     ctx.fillStyle = randomColor(0,255);
     ctx.beginPath();
     ctx.arc(randomNum(0,width),randomNum(0,height), 1, 0, 2*Math.PI);

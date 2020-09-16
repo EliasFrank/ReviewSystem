@@ -48,10 +48,13 @@ public class UserUploadServlet extends HttpServlet {
                     if(index != -1)
                         filename = filename.substring(index+1);
                     try {
+                        if("".equals(filename)){
+                            map.put("annex", "");
+                            continue;
+                        }
                         File file = new File("/data/reviewSystem", filename);
                         for(int i = 1;file.exists(); i++)
                             file = new File("/data/reviewSystem", i + filename);
-
                         map.put("annex", file.getAbsolutePath());
                         item.write(file);
                     }catch (Exception e){
