@@ -20,6 +20,8 @@
 		body{
 			margin-top: 50px;
             background-color: rgb(241, 239, 239);
+            padding-bottom: 70px;
+            margin-bottom: 60px;
 			
 		}
         .project-info{
@@ -45,6 +47,15 @@
         }
         #giant{
             height: 180px;
+        }
+        .foote{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            /* Set the fixed height of the footer here */
+            height: 10px;
+            background-color: #f5f5f5;
+
         }
 	</style>
   </head>
@@ -164,7 +175,7 @@
      
 
     </div>
-    <div class="navbar navbar-fixed-bottom">
+    <!-- <div class="footer">
         <div class="container">
             <div class="text-center">
                 <br>
@@ -177,11 +188,14 @@
                 </ul>
             </div>
         </div>
-    </div>
-    <script src="/ReviewSystem/js/jquery-3.4.1.min.js"></script>
+    </div> -->
+    <!-- <script src="/ReviewSystem/js/jquery-3.4.1.min.js"></script>
     <script src="/ReviewSystem/js/bootstrap.min.js"></script>
-    <script src="/ReviewSystem/js/estimate.js"></script>
-    <!-- <script src="js/scripts.js"></script> -->
+    <script src="/ReviewSystem/js/estimate.js"></script> -->
+     <!-- <script src="js/scripts.js"></script> -->
+     <script src="../js/jquery-3.4.1.min.js"></script>
+     <script src="../js/bootstrap.min.js"></script>
+     <script src="../js/estimate.js"></script>
   </body>
 </c:if>
 </html>

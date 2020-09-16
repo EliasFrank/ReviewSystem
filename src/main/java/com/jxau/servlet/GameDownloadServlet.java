@@ -20,7 +20,7 @@ public class GameDownloadServlet extends HttpServlet {
         String ContentType = this.getServletContext().getMimeType(filename);
 
         String framename  =null;
-        int index = filename.lastIndexOf("\\");
+        int index = filename.lastIndexOf("/");
         if(index != -1)
             framename = filename.substring(index+1);
         //String framename = filenameEncoding("句号.mp3", req);
