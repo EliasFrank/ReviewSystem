@@ -108,12 +108,12 @@
             </div>
             <div class="col-md-8 column">
                 <h3>
-                    您好，申请人！
+                    您好，管理员！
                 </h3>
                 <div class="tabbable" id="tabs-79421">
                     <ul class="nav nav-tabs">
                         <li class="active">
-                             <a href="#panel-1" data-toggle="tab">我创建的项目</a>
+                             <a href="#panel-1" data-toggle="tab">创建项目</a>
                         </li>
                         <li>
                              <a href="#panel-2" data-toggle="tab" onclick="selectAllCheck()">专家管理</a>
