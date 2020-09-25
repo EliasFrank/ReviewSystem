@@ -24,7 +24,6 @@ function checkEmail(str){
         return false;
     }
 }
-
 function checkPwd(value){
     var ptr_digit = /^.*[0-9]+.*$/;
     var ptr_lowcase = /^.*[a-zA-Z]+.*$/;
