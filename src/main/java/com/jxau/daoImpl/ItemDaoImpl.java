@@ -43,6 +43,7 @@ public class ItemDaoImpl {
 
             pstmt.execute();
         }catch (Exception e){
+            e.printStackTrace();
             throw new Exception();
         }
     }

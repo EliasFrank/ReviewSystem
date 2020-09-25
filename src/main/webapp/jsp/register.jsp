@@ -164,6 +164,7 @@
            
         <div class="col-md-1"></div>
     </div>
+    </div>
 </body>
  
 <script src="../js/jquery-3.4.1.min.js"></script>
