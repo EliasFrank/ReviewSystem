@@ -167,16 +167,17 @@
                             <button class="btn btn-danger text-right" type="button" id="add">删除用户</button>
                         </div>
                         <div class="tab-pane" id="panel-2">
-                            <table class="table">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <td><label>用户名</label></td>
                                         <td><label>用户类型</label></td>
-                                        <td><label>用户邮箱</label></td>
+                                        <td><button class="btn btn-info">成为专家</button><label>(Ctrl 实现多选)</label></td>
+                                        <td><button class="btn btn-danger">取消专家</button><label>(Ctrl 实现多选)</label></td>
                                     </tr>
                                 </thead>
                                 <tbody id="checkUser">
-                                 <%--后台ajax加入数据--%>
+                                 <%--后台ajax加入数据--%
                                 </tbody>
                             </table>
                         </div>
