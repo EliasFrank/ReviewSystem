@@ -115,6 +115,7 @@
                         <td><label>用户名</label></td>
                         <td><label>比赛名称</label></td>
                         <td><label>项目名称</label></td>
+                        <td><label>项目总分</label></td>
                         <td><label>操作</label></td>                                        
                     </tr>
                 </thead>
@@ -124,6 +125,7 @@
 	                        <td><span>${i.userName}</span></td>
 	                        <td><span>${i.gameName}</span></td>
 	                        <td><span>${i.itemName}</span></td>
+	                        <td><span>${i.itemGrade}</span></td>
 	                        <td>
                                 <a href="/ReviewSystem/getPartServlet?itemId=${i.itemId}&gameId=${i.gameId}">评分</a>
                             </td>

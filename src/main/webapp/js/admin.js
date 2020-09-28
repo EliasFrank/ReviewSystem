@@ -345,3 +345,29 @@ function get(){
         }
     }
 }
+function addUserFront(){
+    var tbody = document.getElementById("originTab");
+    var tr = document.createElement("tr");
+    // tr.setAttribute
+    var td1 = document.createElement("td");
+    td1.innerHTML = "<td><input class='input' placeholder='用户名'></td>";
+    var td2 = document.createElement("td");
+    td2.innerHTML = "<td><input class='input' placeholder='密码'></td>";
+    var td3 = document.createElement("td");
+    td3.innerHTML = "<td><input class='input' placeholder='姓名'></td>";
+    var td4 = document.createElement("td");
+    td4.innerHTML = "<td><button class='btn btn-danger'>重置密码</button></td>";
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    tr.appendChild(td3);
+    tr.appendChild(td4);
+    tbody.appendChild(tr);
+}
+window.onload = function btn(){
+    document.getElementById("add").onclick = function(){
+        addUserFront();
+        // alert(n);
+        // console.log(n);
+    }
+}
+

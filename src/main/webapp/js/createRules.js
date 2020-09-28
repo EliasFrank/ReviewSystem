@@ -77,8 +77,8 @@ function add(){
         alert("最多设置10条评分标准");
         return;
     }
-    var code = "<tr id='row"+n+"'><td><span class='star'>*</td><td></td><td><input type='text' class='form-control' placeholder='评分标准名' name='standard' id='standard"+n
-    +"'></td><td><input type='text' class='form-control' placeholder='分数' name='standardGrade' id='standardGrade"+n+"'></td></tr>";
+    // var code = "<tr id='row"+n+"'><td><span class='star'>*</td><td></td><td><input type='text' class='form-control' placeholder='评分标准名' name='standard' id='standard"+n
+    // +"'></td><td><input type='text' class='form-control' placeholder='分数' name='standardGrade' id='standardGrade"+n+"'></td></tr>";
     var tr = document.createElement("tr");
     tr.setAttribute("id", "row"+n);
     var td1 = document.createElement("td");

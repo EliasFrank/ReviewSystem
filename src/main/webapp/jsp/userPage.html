@@ -97,29 +97,9 @@
 				</p>
 			</div>
 			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-3">
-					<div class="card infos">
-						<img class="card-img-top preImg" alt="Bootstrap Thumbnail First" src="/ReviewSystem/img/apply.jpg">
-						<div class="card-block">
-							<h5 class="card-title">
-								申请成为评审专家
-							</h5>
-							<div>
-								1、可以查看、下载相应的项目，并且对每一个项目的各个方面进行打分，然后统计该项目的总分数。
-							</div>
-							
-							<div>
-								2、可以查看自己有资格审核的申报项目
-							</div>
-							<p class="text-left">
-								<a class="btn btn-primary" onclick="add(100)" id="apply">申请</a>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-2"></div>
-				<div class="col-md-3">
+				
+				<div class="col-md-1"></div>
+				<div class="col-md-2">
 					<div class="card">
 						<img class="card-img-top preImg" alt="Bootstrap Thumbnail Second" src="/ReviewSystem/img/personnel.jpg">
 						<div class="card-block">
@@ -139,10 +119,7 @@
 					</div>
 				</div>
 				<div class="col-md-2"></div>
-			</div>
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-3">
+				<div class="col-md-2">
 					<div class="card">
 						<img class="card-img-top preImg" alt="Bootstrap Thumbnail Third" src="/ReviewSystem/img/projects.jpg">
 						<div class="card-block">
@@ -161,7 +138,7 @@
 					</div>
 				</div>
 				<div class="col-md-2"></div>
-				<div class="col-md-3">
+				<div class="col-md-2">
 					<div class="card">
 						<img class="card-img-top preImg" alt="Bootstrap Thumbnail Third" src="/ReviewSystem/img/projects.jpg">
 						<div class="card-block">
@@ -179,18 +156,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-2"></div>
+				<div class="col-md-1"></div>
 			</div>
-		</div>
-		<div class="text-center">
-			<br>
-			<ul class="list-inline">
-				<li>@ JXAU</li>
-				<li>|</li>
-				<li><a href="#" class="text-danger">使用条款</a></li>
-				<li>|</li>
-				<li><a href="#" class="text-danger">隐私政策</a></li>
-			</ul>
+			
 		</div>
 	</div>
 </div>
