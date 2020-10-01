@@ -46,8 +46,8 @@
         
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav" id="mytab" role="tablist">
-                            <li class="active" role="presentation"><a href="professor.html">主页</a></li>
-                            <li role="presentation"><a href="professor.html" ></a></li>
+                            <li class="active" role="presentation"><a href="professor.jsp">主页</a></li>
+                            <li role="presentation"><a href="professor.jsp" ></a></li>
                             
                         </ul>
         

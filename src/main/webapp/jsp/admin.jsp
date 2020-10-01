@@ -108,13 +108,16 @@
             </div>
             <div class="col-md-8 column">
                 <h3>
-                    您好，管理员！
+                    您好，申请人！
                 </h3>
                 <div class="tabbable" id="tabs-79421">
                     <ul class="nav nav-tabs">
                         <li class="active">
-                             <a href="#panel-1" data-toggle="tab">创建项目</a>
+                             <a href="#panel-1" data-toggle="tab">我创建的项目</a>
                         </li>
+                        <li>
+                            <a href="#panel-6" data-toggle="tab" >用户列表</a>
+                       </li>
                         <li>
                              <a href="#panel-2" data-toggle="tab" onclick="selectAllCheck()">专家管理</a>
                         </li>
@@ -141,17 +144,40 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="tab-pane" id="panel-2">
+                        <div class="tab-pane" id="panel-6">
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <td><label>用户名</label></td>
+                                        <td><label>密码</label></td>
+                                        <td><label>姓名</label></td>
+                                        <td><label></label></td>
+                                    </tr>
+                                </thead>
+                                <tbody id="originTab">
+                                    <tr>
+                                        <td><p>hl</p></td>
+                                        <td><p>111</p></td>
+                                        <td><p>黄雷</p></td>
+                                        <td><button class="btn btn-danger">重置密码</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button class="btn btn-info text-right" type="button" id="">添加用户</button>
+                            <button class="btn btn-danger text-right" type="button" id="">删除用户</button>
+                        </div>
+                        <div class="tab-pane" id="panel-2">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <td><label>用户名</label></td>
                                         <td><label>用户类型</label></td>
-                                        <td><label>用户邮箱</label></td>
+                                        <td><button class="btn btn-info">成为专家</button><label>(Ctrl 实现多选)</label></td>
+                                        <td><button class="btn btn-danger">取消专家</button><label>(Ctrl 实现多选)</label></td>
                                     </tr>
                                 </thead>
                                 <tbody id="checkUser">
-                                 <%--后台ajax加入数据--%>
+                                 <%--后台ajax加入数据--%
                                 </tbody>
                             </table>
                         </div>
@@ -213,7 +239,7 @@
 
 
 </div>
-<div class="navbar navbar-fixed-bottom">
+<!-- <div class="navbar navbar-fixed-bottom">
     <div class="container">
         <div class="text-center">
             <br>
@@ -226,11 +252,14 @@
             </ul>
         </div>
     </div>
-</div>
+</div> -->
 
-    <script src="/ReviewSystem/js/jquery-3.4.1.min.js"></script>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/admin.js"></script>
+    <!-- <script src="/ReviewSystem/js/jquery-3.4.1.min.js"></script>
     <script src="/ReviewSystem/js/bootstrap.min.js"></script>
-    <script src="/ReviewSystem/js/admin.js"></script>
+    <script src="/ReviewSystem/js/admin.js"></script> -->
     <script>
         $('#grade').on('shown.bs.modal', function () {
   $('#myInput').focus()

@@ -7,7 +7,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
-<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>所有比赛</title>
@@ -53,8 +52,8 @@
         
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav" id="mytab" role="tablist">
-                            <li class="active" role="presentation"><a href="professor.html">主页</a></li>
-                            <li role="presentation"><a href="professor.html" ></a></li>
+                            <li class="active" role="presentation"><a href="professor.jsp">主页</a></li>
+                            <li role="presentation"><a href="professor.jsp" ></a></li>
                             
                         </ul>
         

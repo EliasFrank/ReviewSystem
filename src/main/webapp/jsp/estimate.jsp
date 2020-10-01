@@ -19,9 +19,8 @@
     <style>
 		body{
 			margin-top: 50px;
+            margin-bottom: 50px;
             background-color: rgb(241, 239, 239);
-            padding-bottom: 70px;
-            margin-bottom: 60px;
 			
 		}
         .project-info{
@@ -35,7 +34,13 @@
         .star{
             color: red;
         }
-        td
+        td{
+            width: 350px;
+        }
+        /* table{
+            width: 250px;
+        } */
+        /* td
         {
             border: 1px solid transparent !important ;
         }
@@ -44,18 +49,9 @@
         }
         tbody{
             border: 1px solid transparent !important ;
-        }
+        } */
         #giant{
             height: 180px;
-        }
-        .foote{
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            /* Set the fixed height of the footer here */
-            height: 10px;
-            background-color: #f5f5f5;
-
         }
 	</style>
   </head>
@@ -71,7 +67,7 @@
         
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav" id="mytab" role="tablist">
-                            <li class="active" role="presentation"><a href="allItems.html">主页</a></li>
+                            <li class="active" role="presentation"><a href="allItems.jsp">主页</a></li>
                             <li role="presentation"><a href="" ></a></li>
                             
                         </ul>
@@ -126,7 +122,7 @@
                         <tr>
                             <td><label>项目名称</label></td>
                             <td><label>项目简介</label></td>
-                            <td><label>申报文件下载</label></td>
+                            <td><label>申报文件查看</label></td>
                         </tr>
                         </thead>
                         <tbody>
@@ -134,20 +130,20 @@
                         <tr>
                             <td><span>${items.itemName}</span></td>
                             <td><span>${intro}</span></td>
-                            <td><span><a href="/ReviewSystem/DownloadItemFileServlet?itemId=${items.itemId}">点击下载</a></span></td>
+                            <td><span><a href="/ReviewSystem/DownloadItemFileServlet?itemId=${items.itemId}">点击查看</a></span></td>
                          </tr>
                         </tbody>
                     </table>
                 </div>
             <form action="/ReviewSystem/Estimate_submit_servlet" method="post">
                 <div class="project-info well well-lg">
-                    <table class="table table-hover ">
+                    <table class="table table-hover text-nowrap" style="table-layout: fixed;">
                          <thead>
                              <tr>
                                  <td><label>评分标准</label></td>
                                  <td><label>满分</label></td>
                                  <td><label>分数</label></td>
-                                 <td><label>评分原因</label></td>
+                                 <td><label></label></td>
                              </tr>
                          </thead>
                          <tbody>
@@ -158,10 +154,16 @@
                                      <td><span>${part.explain}</span></td>
                                      <td><span><input type="text" value="${part.grade}" name="hid" readonly="readonly"/></span></td>
                                      <td><input type="text" name="grade" value="" height="10"></td>
-                                     <td><input type="text" name="partExplain" value="" height="10"></td>
+                                     <!-- <td><input type="text" name="partExplain" value="" height="10"></td> -->
                                  </tr>
-                             </c:forEach>
-                             
+                             </c:forEach>           
+                         </tbody>
+                         <tbody>
+                            <tr>
+                                <td><label>评分原因</label></td>
+                                <td><textarea name="" id="" cols="67" rows="7" style="resize: none;"></textarea></td>
+                                <td></td>
+                            </tr>      
                          </tbody>
                     </table>
                 </div>  
@@ -173,29 +175,13 @@
             <a href="Select_all_work_servlet" class="btn btn-default">取消</a>
         </div>
      
-
     </div>
-    <!-- <div class="footer">
-        <div class="container">
-            <div class="text-center">
-                <br>
-                <ul class="list-inline">
-                    <li>@ JXAU</li>
-                    <li>|</li>
-                    <li><a href="#" class="text-danger">使用条款</a></li>
-                    <li>|</li>
-                    <li><a href="#" class="text-danger">隐私政策</a></li>
-                </ul>
-            </div>
-        </div>
-    </div> -->
-    <!-- <script src="/ReviewSystem/js/jquery-3.4.1.min.js"></script>
+    </div>
+
+    <script src="/ReviewSystem/js/jquery-3.4.1.min.js"></script>
     <script src="/ReviewSystem/js/bootstrap.min.js"></script>
-    <script src="/ReviewSystem/js/estimate.js"></script> -->
-     <!-- <script src="js/scripts.js"></script> -->
-     <script src="../js/jquery-3.4.1.min.js"></script>
-     <script src="../js/bootstrap.min.js"></script>
-     <script src="../js/estimate.js"></script>
+    <script src="/ReviewSystem/js/estimate.js"></script>
+    <!-- <script src="js/scripts.js"></script> -->
   </body>
 </c:if>
 </html>
