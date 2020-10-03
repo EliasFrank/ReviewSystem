@@ -10,6 +10,30 @@ import java.io.Serializable;
 public class Grade implements Serializable{
 	private int itemId;//提交的项目id
 	private double totalGrade;//根据项目各部分发成绩，综合而得总成绩
+
+	@Override
+	public String toString() {
+		return "Grade{" +
+				"itemId=" + itemId +
+				", totalGrade=" + totalGrade +
+				", explain='" + explain + '\'' +
+				", userId=" + userId +
+				", gradeId=" + gradeId +
+				", gameId=" + gameId +
+				", expertId=" + expertId +
+				'}';
+	}
+
+	private String explain;
+
+	public String getExplain() {
+		return explain;
+	}
+
+	public void setExplain(String explain) {
+		this.explain = explain;
+	}
+
 	private int userId;//用户id
 	private int gradeId;//成绩单id,数据库内不能设置，自增
 	private int gameId;
@@ -22,18 +46,6 @@ public class Grade implements Serializable{
 		this.gradeId = gradeId;
 		this.gameId = gameId;
 		this.expertId = expertId;
-	}
-
-	@Override
-	public String toString() {
-		return "Grade{" +
-				"itemId=" + itemId +
-				", totalGrade=" + totalGrade +
-				", userId=" + userId +
-				", gradeId=" + gradeId +
-				", gameId=" + gameId +
-				", expertId=" + expertId +
-				'}';
 	}
 
 	public int getGameId() {

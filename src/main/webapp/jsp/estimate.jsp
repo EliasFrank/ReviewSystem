@@ -130,7 +130,7 @@
                         <tr>
                             <td><span>${items.itemName}</span></td>
                             <td><span>${intro}</span></td>
-                            <td><span><a href="/ReviewSystem/DownloadItemFileServlet?itemId=${items.itemId}">点击查看</a></span></td>
+                            <td><span><a href="/ReviewSystem/DownloadItemFileServlet?itemId=${items.itemId}" target="_blank">点击查看</a></span></td>
                          </tr>
                         </tbody>
                     </table>
@@ -161,20 +161,18 @@
                          <tbody>
                             <tr>
                                 <td><label>评分原因</label></td>
-                                <td><textarea name="" id="" cols="67" rows="7" style="resize: none;"></textarea></td>
+                                <td><textarea name="partExplain" id="" cols="67" rows="7" style="resize: none;"></textarea></td>
                                 <td></td>
                             </tr>      
                          </tbody>
                     </table>
-                </div>  
+                </div>
+                <div class="text-right">
+                    <input type="submit" class="btn btn-info" value="提交">
+                    <a href="Select_all_work_servlet" class="btn btn-default">取消</a>
+                </div>
             </form>
             <div class="col-md-2"></div>
-
-        <div class="text-right">
-            <input type="submit" class="btn btn-info" value="提交">
-            <a href="Select_all_work_servlet" class="btn btn-default">取消</a>
-        </div>
-     
     </div>
     </div>
 

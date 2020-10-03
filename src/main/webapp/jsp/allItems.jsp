@@ -57,23 +57,17 @@
                     <div class="navbar-header">
                         <a href="#" class="navbar-brand">@</a>
                     </div>
-        
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav" id="mytab" role="tablist">
                             <li class="active" role="presentation"><a href="professor.jsp">主页</a></li>
                             <li role="presentation"><a href="professor.jsp" ></a></li>
-                            
                         </ul>
-        
-                    
-        
                         <form class="navbar-form navbar-left" role="search">
                             <div class="form-group">
                                 <input type="text" placeholder="搜索" class="form-control">
                             </div>
                             <button class="btn btn-info" type="submit">搜索</button>
                         </form>
-        
                         <ul class="nav navbar-nav navbar-right">
                             <li role="presentation" class="">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-comment"><span class="badge"></span></span></a>
@@ -125,9 +119,14 @@
 	                        <td><span>${i.userName}</span></td>
 	                        <td><span>${i.gameName}</span></td>
 	                        <td><span>${i.itemName}</span></td>
-	                        <td><span>${i.itemGrade}</span></td>
+	                        <td><span>${i.grade}</span></td>
 	                        <td>
-                                <a href="/ReviewSystem/getPartServlet?itemId=${i.itemId}&gameId=${i.gameId}">评分</a>
+                                <c:if test="${i.isUsed == 0}">
+                                    <a href="/ReviewSystem/getPartServlet?itemId=${i.itemId}&gameId=${i.gameId}">评分</a>
+                                </c:if>
+                                <c:if test="${i.isUsed == 1}">
+                                    已评分
+                                </c:if>
                             </td>
 	                    </tr>
 	                </c:forEach>

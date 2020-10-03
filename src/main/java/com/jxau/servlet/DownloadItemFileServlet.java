@@ -7,13 +7,33 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "DownloadItemFileServlet", urlPatterns = "/DownloadItemFileServlet")
 public class DownloadItemFileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html; charset=utf-8");
+        int itemId = Integer.parseInt(request.getParameter("itemId"));
+        String itemFilePath = SelectService.getItemFilePath(itemId);
+
+        BufferedReader fis = new BufferedReader(new InputStreamReader(new FileInputStream(itemFilePath)));
+        List<String> words = new ArrayList<>();
+
+        byte[] b = new byte[1024];
+        String line = null;
+        while((line = fis.readLine()) != null)
+            words.add(line);
+        for (String s :
+                words) {
+            System.out.println(words);
+        }
+        fis.close();
+    }
+
+    private void download(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
         int itemId = Integer.parseInt(request.getParameter("itemId"));

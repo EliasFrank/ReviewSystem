@@ -4,9 +4,16 @@ public class CheckItem {
     private int itemId;
     private int  gameId;
     private int userId;
-    private String gameName;
-    private String itemName;
-    private String userName;
+    private double grade;
+    private int isUsed;
+
+    public int getIsUsed() {
+        return isUsed;
+    }
+
+    public void setIsUsed(int isUsed) {
+        this.isUsed = isUsed;
+    }
 
     @Override
     public String toString() {
@@ -14,11 +21,24 @@ public class CheckItem {
                 "itemId=" + itemId +
                 ", gameId=" + gameId +
                 ", userId=" + userId +
-                ", gameNmae='" + gameName + '\'' +
+                ", grade=" + grade +
+                ", gameName='" + gameName + '\'' +
                 ", itemName='" + itemName + '\'' +
                 ", userName='" + userName + '\'' +
                 '}';
     }
+
+    public double getGrade() {
+        return grade;
+    }
+
+    public void setGrade(double grade) {
+        this.grade = grade;
+    }
+
+    private String gameName;
+    private String itemName;
+    private String userName;
 
     public int getGameId() {
         return gameId;

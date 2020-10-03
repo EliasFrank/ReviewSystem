@@ -63,14 +63,14 @@ public class AddService {
         new AccountDaoImpl().addUserApply(Integer.parseInt(userId), gameId);
     }
 
-    public static void addGrade(String userId, String[] partexplains, String[] partflags, String[] grades, String itemsId) {
+    public static void addGrade(String userId, String partexplains, String[] partflags, String[] grades, String itemsId) {
         ArrayList<PartGrade> partGrades = new ArrayList<>();
         double totalGrade = 0;
         for(int i = 0; i < grades.length; i++){
             PartGrade p = new PartGrade();
             p.setExpertId(Integer.parseInt(userId));
             p.setItemId(Integer.parseInt(itemsId));
-            p.setPartexplain(partexplains[i]);
+            //p.setPartexplain(partexplains[i]);
             p.setPartgrade(Double.parseDouble(grades[i]));
             p.setPartflag(Integer.parseInt(partflags[i]));
 
@@ -83,19 +83,21 @@ public class AddService {
         grade.setGameId(Integer.parseInt(info[0]));
         grade.setItemId(Integer.parseInt(itemsId));
         grade.setTotalGrade(totalGrade);
+        grade.setExplain(partexplains);
         grade.setUserId(Integer.parseInt(info[1]));
 
 
         Connection connection = MySQLConnection.getConnection();
         GradesImpl gradesImpl = new GradesImpl();
-        ItemDaoImpl itemImpl = new ItemDaoImpl();
+
+//      ItemDaoImpl itemImpl = new ItemDaoImpl();
         try{
             connection.setAutoCommit(false);
 
             gradesImpl.addPartGrades(partGrades, connection);
             gradesImpl.addTotalGrades(grade, connection);
             //itemImpl.setItemFlag(grade.getExpertId(), grade.getItemId());
-
+            gradesImpl.setIsUsed(userId, itemsId);
             connection.commit();
 
         }catch (Exception e){

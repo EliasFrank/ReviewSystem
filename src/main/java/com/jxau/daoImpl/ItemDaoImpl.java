@@ -7,9 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class ItemDaoImpl {
     public void addItem(Items items, Connection con) throws Exception{
@@ -138,14 +136,14 @@ public class ItemDaoImpl {
     }
 
     public ArrayList<CheckItem> getCheckItems(int userId) {
-        ArrayList<CheckItem> items = new ArrayList<CheckItem>();
+        Map<Integer,CheckItem> items = new HashMap<Integer,CheckItem>();
 
         //获取连接
         Connection connection = new MySQLConnection().getConnection();
 
-        String sql = "select ci.* from check_item ci, `check` c " +
-                "where c.itemId = ci.itemId " +
-                "and c.userId = ?";
+        String sql = "select distinct ci.*, g.totalGrade, c.isUsed from check_item ci, `check` c, grade g " +
+                "where c.userId = ? and c.itemId = ci.itemId and IF(g.itemId = c.itemId, 1, g.itemId = 0) " +
+                "and c.isCheck = 1";
 
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
@@ -158,11 +156,12 @@ public class ItemDaoImpl {
                 item.setGameId(rs.getInt("gameId"));
                 item.setUserId(rs.getInt("userId"));
                 item.setItemId(rs.getInt("itemId"));
+                item.setGrade(rs.getDouble("totalGrade"));
                 item.setGameName(rs.getString("gameName"));
                 item.setItemName(rs.getString("itemName"));
                 item.setUserName(rs.getString("name"));
-
-                items.add(item);
+                item.setIsUsed(rs.getInt("isUsed"));
+                items.put(rs.getInt("itemId"), item);
             }
             rs.close();
             pstmt.close();
@@ -172,7 +171,14 @@ public class ItemDaoImpl {
             //关闭数据库连接
             MySQLConnection.close(connection);
         }
-        return items;
+        ArrayList<CheckItem> list = new ArrayList<>();
+        Set<Map.Entry<Integer, CheckItem>> set =  items.entrySet();
+        Iterator<Map.Entry<Integer, CheckItem>> iterator = set.iterator();
+        while(iterator.hasNext()){
+            Map.Entry<Integer, CheckItem> entry = iterator.next();
+            list.add(entry.getValue());
+        }
+        return list;
     }
 
     public Map<Integer, Object> getItems(String itemId) {

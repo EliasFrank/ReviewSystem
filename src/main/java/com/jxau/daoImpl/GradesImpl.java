@@ -16,18 +16,18 @@ import java.util.List;
 public class GradesImpl implements Grades {
     @Override
     public void addPartGrades(ArrayList<PartGrade> partGrades, Connection connection) throws SQLException {
-        String sql = "INSERT INTO `partGrade` (`partgrade`, `partexplain`, `partflag`, `expertId`, `itemId`) " +
-                "VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO `partGrade` (`partgrade`, `partflag`, `expertId`, `itemId`) " +
+                "VALUES (?, ?, ?, ?)";
 
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
 
             for(PartGrade part : partGrades){
                 pstmt.setDouble(1,part.getPartgrade());
-                pstmt.setString(2, part.getPartexplain());
-                pstmt.setInt(3, part.getPartflag());
-                pstmt.setInt(4, part.getExpertId());
-                pstmt.setInt(5, part.getItemId());
+//                pstmt.setString(2, part.getPartexplain());
+                pstmt.setInt(2, part.getPartflag());
+                pstmt.setInt(3, part.getExpertId());
+                pstmt.setInt(4, part.getItemId());
 
                 pstmt.addBatch();
             }
@@ -40,17 +40,18 @@ public class GradesImpl implements Grades {
 
     @Override
     public void addTotalGrades(Grade grade, Connection connection) throws SQLException {
-        String sql = "INSERT INTO `grade` (`itemId`, `totalGrade`, `userId`, `gradeId`, `gameId`, `expertId`) " +
-                "VALUES (?, ?, ?, NULL, ?, ?)";
+        String sql = "INSERT INTO `grade` (`itemId`, `totalGrade`,`explain`, `userId`, `gradeId`, `gameId`, `expertId`) " +
+                "VALUES (?, ?, ?, ?, NULL, ?, ?)";
 
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
 
             pstmt.setInt(1,grade.getItemId());
             pstmt.setDouble(2, grade.getTotalGrade());
-            pstmt.setInt(3, grade.getUserId());
-            pstmt.setInt(4, grade.getGameId());
-            pstmt.setInt(5, grade.getExpertId());
+            pstmt.setString(3, grade.getExplain());
+            pstmt.setInt(4, grade.getUserId());
+            pstmt.setInt(5, grade.getGameId());
+            pstmt.setInt(6, grade.getExpertId());
 
             pstmt.execute();
             pstmt.close();
@@ -99,5 +100,23 @@ public class GradesImpl implements Grades {
             MySQLConnection.close(connection);
         }
         return grades;
+    }
+
+    public void setIsUsed(String userId, String itemsId) throws SQLException {
+        //获取连接
+        Connection connection = new MySQLConnection().getConnection();
+
+        String sql = "update `check` set isUsed = 1 where userId = ? and itemId = ?";
+
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+
+            pstmt.setString(1, userId);
+            pstmt.setString(2, itemsId);
+            pstmt.executeUpdate();
+            pstmt.close();
+        } catch (SQLException e) {
+            throw e;
+        }
     }
 }
