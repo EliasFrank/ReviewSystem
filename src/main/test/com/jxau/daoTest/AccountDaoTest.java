@@ -5,6 +5,7 @@ import com.jxau.domain.Game;
 import com.jxau.domain.User;
 import com.jxau.domain.UserApply;
 import com.jxau.service.SelectService;
+import com.jxau.service.UpdateSrvice;
 import net.sf.json.JSONArray;
 import org.junit.Test;
 import java.util.Date;
@@ -17,6 +18,12 @@ public class AccountDaoTest {
        // new AccountDaoImpl().selectAllCheckUser();
         List<Game> list =  new AccountDaoImpl().selectAllGames();
         System.out.println(list);
+    }
+
+    @Test
+    public void test11() {
+        String[] s = {"1", "2"};
+        new UpdateSrvice().checkAddExpert(s, "1");
     }
 
     @Test

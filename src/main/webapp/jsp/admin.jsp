@@ -166,8 +166,8 @@
                                     <tr>
                                         <td><label>用户名</label></td>
                                         <td><label>用户类型</label></td>
-                                        <td><button class="btn btn-info">成为专家</button><label>(Ctrl 实现多选)</label></td>
-                                        <td><button class="btn btn-danger">取消专家</button><label>(Ctrl 实现多选)</label></td>
+                                        <td><button class="btn btn-info" onclick="toBeExpert()">成为专家</button></td>
+                                        <td><button class="btn btn-danger">取消专家资格</button></td>
                                     </tr>
                                 </thead>
                                 <tbody id="checkUser">

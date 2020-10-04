@@ -249,19 +249,23 @@ function addChoose(choice) {
         tbody.appendChild(tr);
     }
 }
-function toBeExpert(userId) {
-
+function toBeExpert() {
+    var toBes = document.getElementsByName("beOrNotBe");
     var xmlHttp = get();
-
+    var ids = "";
+    for(var i = 0; i < toBes.length; i++){
+        if(toBes[i].checked == true)
+            ids += toBes[i].value + ",";
+    }
     xmlHttp.open("POST", "/ReviewSystem/CheckExpertServlet", true);
 
     xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-    xmlHttp.send("id=" + userId);
+    xmlHttp.send("userflag=1&id=" + ids);
 
     xmlHttp.onreadystatechange = function(){
         if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
-            alert("已同意该请求");
+            alert("已授予专家身份");
             selectAllCheck();
         }
     };
@@ -325,20 +329,15 @@ function addCheckUser(users) {
         td2.appendChild(span2);
 
         var td3 = document.createElement("td");
-        var span3 = document.createElement("span");
-        span3.appendChild(document.createTextNode(users[i].email));
+        var span3 = document.createElement("input");
+        span3.setAttribute("type", "checkbox");
+        span3.setAttribute("name", "beOrNotBe");
+        span3.setAttribute("value", users[i].userId);
         td3.appendChild(span3);
-
-        var td4 = document.createElement("td");
-        var a = document.createElement("hidden");
-        a.setAttribute("value", users[i].userId);
-        a.setAttribute("name", "expertsId");
-        td4.appendChild(a);
 
         tr.appendChild(td);
         tr.appendChild(td2);
         tr.appendChild(td3);
-        tr.appendChild(td4);
         tbody.appendChild(tr);
     }
 }

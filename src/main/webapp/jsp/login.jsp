@@ -39,7 +39,7 @@
                         <h2>登录</h2>
                     </center>
                     <br>
-                    <form action="" method="POST" target="hidden" id="loginForm">
+                    <form method="POST" target="hidden" id="loginForm">
                         <div class="input-group input-group-lg">
                             <input type="text" class="form-control well well-lg infos" placeholder="用户名" name="UserName" id="UserName">
                             <span class="input-group-addon glyphicon glyphicon-exclamation-sign btn btn-link" aria-hidden="true" data-toggle="tooltip" data-placement="left" title="忘记用户名"><a href=""></a></span>
@@ -60,7 +60,7 @@
                         <p id="msg" class="text-center text-danger"></p>
                         <div class="form-group text-center  ">
                             <!-- <label for="my-input">Text</label> -->
-                            <input id="userlogin" class="btn btn-info" type="submit" name="log" value="登录" onclick="login()"/>
+                            <input id="userlogin" class="btn btn-info" type="button" name="log" value="登录" onclick="login()"/>
                         </div>
                     </form>
                 </div>

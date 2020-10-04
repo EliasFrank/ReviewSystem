@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.util.List;
 
 public interface AccountDao {
-    public boolean updateUserFlag(int id, int flag, Connection connection) throws Exception;
     public boolean addExpertApply(int id);
     public boolean deleteExpertApply(int id, Connection connection) throws Exception;
 
@@ -29,4 +28,5 @@ public interface AccountDao {
     void updateItemSelect(int itemId, Connection con);
 
     void addUserApply(int parseInt, int gameId);
+    boolean updateUserFlag(String[] id, String flag, Connection connection) throws Exception;
 }

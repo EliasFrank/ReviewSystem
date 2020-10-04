@@ -6,13 +6,12 @@ import com.jxau.myUtils.MySQLConnection;
 import java.sql.Connection;
 
 public class UpdateSrvice {
-    public static void checkAddExpert(int id, int flag){
+    public static void checkAddExpert(String[] id, String flag){
         Connection con = MySQLConnection.getConnection();
         AccountDaoImpl dao = new AccountDaoImpl();
         try{
             con.setAutoCommit(false);
             dao.updateUserFlag(id, flag, con);
-            dao.deleteExpertApply(id, con);
             con.commit();
         }catch (Exception e){
             e.printStackTrace();

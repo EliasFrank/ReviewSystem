@@ -12,8 +12,12 @@ import java.io.IOException;
 @WebServlet(name = "CheckExpertServlet", urlPatterns = "/CheckExpertServlet")
 public class CheckExpertServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        UpdateSrvice.checkAddExpert(id, 1);
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html; charset=utf-8");
+        String allId = request.getParameter("id");
+        String[] ids = allId.split(",");
+
+        UpdateSrvice.checkAddExpert(ids, request.getParameter("userflag"));
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

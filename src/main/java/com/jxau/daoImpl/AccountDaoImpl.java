@@ -323,17 +323,20 @@ public class AccountDaoImpl implements AccountDao {
     }
 
     @Override
-    public boolean updateUserFlag(int id, int flag, Connection connection) throws Exception{
+    public boolean updateUserFlag(String[] id, String flag, Connection connection) throws Exception{
 
         String sql = "update `user` set userflag = ? where userId = ?;";
 
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
 
-            pstmt.setInt(1, flag);
-            pstmt.setInt(2, id);
+            for (String str : id) {
+                pstmt.setString(2, str);
+                pstmt.setString(1, flag);
+                pstmt.addBatch();
+            }
 
-            pstmt.executeUpdate();
+            pstmt.executeBatch();
             pstmt.close();
         } catch (SQLException e) {
             throw e;
@@ -348,10 +351,7 @@ public class AccountDaoImpl implements AccountDao {
 
         Connection connection = new MySQLConnection().getConnection();
 
-        String sql = "select `user`.userId id, `name`, userflag, email from `user` " +
-                    " where `user`.userId in (" +
-                    "  select userId from `check` where isCheck=0 and gameId=0 and itemId=0" +
-                    ")";
+        String sql = "select `user`.userId id, `name`, userflag from `user` where userflag != 0";
 
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
@@ -362,7 +362,6 @@ public class AccountDaoImpl implements AccountDao {
                 User user = new User();
                 user.setUserId(rs.getString("id"));
                 user.setName(rs.getString("name"));
-                user.setEmail(rs.getString("email"));
                 user.setUserflag(rs.getInt("userflag"));
                 users.add(user);
             }
