@@ -1,3 +1,27 @@
+var addCount = 0;
+function addUser() {
+    var info = document.getElementsByClassName("input");
+    var xmlHttp = get();
+    xmlHttp.open("POST", "/ReviewSystem/AddUserServlet", true);
+
+    xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xmlHttp.send("number=" + info[0].value + "&pwd=" + info[1].value + "&name=" + info[2].value);
+    xmlHttp.onreadystatechange = function(){
+        if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
+            var result = xmlHttp.responseText;
+            if(result == "该账号已被使用, 请重新填写"){
+                alert(result);
+                return;
+            }else{
+                alert("添加成功");
+                addCount = 0;
+                selectAllUser();
+            }
+
+        }
+    };
+}
 function resetPassword(id){
     var xmlHttp = get();
     xmlHttp.open("POST", "/ReviewSystem/ResetPwdServlet", true);
@@ -455,13 +479,13 @@ function addUserFront(){
     var tr = document.createElement("tr");
     // tr.setAttribute
     var td1 = document.createElement("td");
-    td1.innerHTML = "<td><input class='input' placeholder='用户名'></td>";
+    td1.innerHTML = "<td><input class='input' placeholder='账号'></td>";
     var td2 = document.createElement("td");
     td2.innerHTML = "<td><input class='input' placeholder='密码'></td>";
     var td3 = document.createElement("td");
     td3.innerHTML = "<td><input class='input' placeholder='姓名'></td>";
     var td4 = document.createElement("td");
-    td4.innerHTML = "<td><button class='btn btn-danger'>重置密码</button></td>";
+    td4.innerHTML = "<td><button class='btn btn-danger' onclick='addUser()'>添加用户</button></td>";
     tr.appendChild(td1);
     tr.appendChild(td2);
     tr.appendChild(td3);
@@ -470,7 +494,12 @@ function addUserFront(){
 }
 window.onload = function btn(){
     document.getElementById("add").onclick = function(){
+        if(addCount == 1){
+            alert("单次只能添加一个用户");
+            return;
+        }
         addUserFront();
+        addCount = 1;
         // alert(n);
         // console.log(n);
     }

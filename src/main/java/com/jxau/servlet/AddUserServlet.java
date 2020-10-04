@@ -10,34 +10,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-@WebServlet(name = "RegisterServlet", urlPatterns = "/RegisterServlet")
-public class RegisterServlet extends HttpServlet {
+@WebServlet(name = "AddUserServlet", urlPatterns = "/AddUserServlet")
+public class AddUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
         User user = getUser(request);
         boolean isExist = SelectService.selectAccount(user.getNumber());
         if(!isExist){
-            response.getWriter().print("<script language='javascript'>alert('该账号已被使用, 请重新填写');window.location.href='jsp/register.jsp';</script>");
+            response.getWriter().print("该账号已被使用, 请重新填写");
         }else{
             AddService.addAccount(user);
-            response.getWriter().print("<script language='javascript'>alert('注册成功，请登录');window.location.href='jsp/login.jsp';</script>");
+            response.getWriter().print("添加成功");
         }
 
     }
     private User getUser(HttpServletRequest request){
         User user = new User();
         user.setUserflag(2);
-        user.setEmail(request.getParameter("Email"));
-        user.setName(request.getParameter("RealName"));
-        user.setNumber(request.getParameter("UserName"));
-        user.setTel(request.getParameter("Tel"));
-        user.setPassword(request.getParameter("Password"));
+        user.setEmail("");
+        user.setName(request.getParameter("name"));
+        user.setNumber(request.getParameter("number"));
+        user.setTel("");
+        user.setPassword(request.getParameter("pwd"));
         return user;
     }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
