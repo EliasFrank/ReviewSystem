@@ -95,4 +95,8 @@ public class SelectService {
     public static ArrayList<Part> getStoreParts(int gameId) {
        return new GameDaoImpl().getStoreParts(gameId);
     }
+
+    public static ArrayList<User> getAllUsers() {
+        return new AccountDaoImpl().getAllUsers();
+    }
 }

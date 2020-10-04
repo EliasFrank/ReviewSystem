@@ -398,4 +398,68 @@ public class AccountDaoImpl implements AccountDao {
         }
         return true;
     }
+
+    public ArrayList<User> getAllUsers() {
+        ArrayList<User> users = new ArrayList<User>();
+
+        Connection connection = new MySQLConnection().getConnection();
+
+        String sql = "select userId, `number`, `password`, `name` from `user`";
+
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            while(rs.next()) {
+                User user = new User();
+                user.setUserId(rs.getString("userId"));
+                user.setName(rs.getString("name"));
+                user.setPassword(rs.getString("password"));
+                user.setNumber(rs.getString("number"));
+                users.add(user);
+            }
+            rs.close();
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            MySQLConnection.close(connection);
+        }
+        return users;
+    }
+
+    public void resetPwd(String id) {
+        Connection connection = new MySQLConnection().getConnection();
+
+        String sql = "UPDATE `user` SET `password`='00000000' WHERE `userId` = ?";
+
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setString(1, id);
+            pstmt.execute();
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            MySQLConnection.close(connection);
+        }
+    }
+
+    public void delUser(String id) {
+        Connection connection = new MySQLConnection().getConnection();
+
+        String sql = "DELETE FROM `user` WHERE `userId` = ?";
+
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setString(1, id);
+            pstmt.execute();
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            MySQLConnection.close(connection);
+        }
+    }
 }

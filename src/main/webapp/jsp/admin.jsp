@@ -113,10 +113,10 @@
                 <div class="tabbable" id="tabs-79421">
                     <ul class="nav nav-tabs">
                         <li class="active">
-                             <a href="#panel-1" data-toggle="tab">我创建的项目</a>
+                             <a href="#panel-1" data-toggle="tab">创建项目</a>
                         </li>
                         <li>
-                            <a href="#panel-6" data-toggle="tab" >用户列表</a>
+                            <a href="#panel-6" data-toggle="tab" onclick="selectAllUser()" >用户列表</a>
                        </li>
                         <li>
                              <a href="#panel-2" data-toggle="tab" onclick="selectAllCheck()">专家管理</a>
@@ -155,16 +155,10 @@
                                     </tr>
                                 </thead>
                                 <tbody id="originTab">
-                                    <tr>
-                                        <td><p>hl</p></td>
-                                        <td><p>111</p></td>
-                                        <td><p>黄雷</p></td>
-                                        <td><button class="btn btn-danger">重置密码</button></td>
-                                    </tr>
+
                                 </tbody>
                             </table>
-                            <button class="btn btn-info text-right" type="button" id="">添加用户</button>
-                            <button class="btn btn-danger text-right" type="button" id="">删除用户</button>
+                            <button class="btn btn-info text-right" type="button" id="add">添加用户</button>
                         </div>
                         <div class="tab-pane" id="panel-2">
                             <table class="table table-hover">
@@ -177,7 +171,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="checkUser">
-                                 <%--后台ajax加入数据--%
+                                 <%--后台ajax加入数据--%>
                                 </tbody>
                             </table>
                         </div>
@@ -254,12 +248,12 @@
     </div>
 </div> -->
 
-    <script src="../js/jquery-3.4.1.min.js"></script>
+    <%--<script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/admin.js"></script>
-    <!-- <script src="/ReviewSystem/js/jquery-3.4.1.min.js"></script>
+    <script src="../js/admin.js"></script>--%>
+    <script src="/ReviewSystem/js/jquery-3.4.1.min.js"></script>
     <script src="/ReviewSystem/js/bootstrap.min.js"></script>
-    <script src="/ReviewSystem/js/admin.js"></script> -->
+    <script src="/ReviewSystem/js/admin.js"></script>
     <script>
         $('#grade').on('shown.bs.modal', function () {
   $('#myInput').focus()

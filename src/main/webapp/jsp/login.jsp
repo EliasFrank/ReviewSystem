@@ -60,7 +60,7 @@
                         <p id="msg" class="text-center text-danger"></p>
                         <div class="form-group text-center  ">
                             <!-- <label for="my-input">Text</label> -->
-                            <input id="userlogin" class="btn btn-info" type="submit" name="log" value="登录" onclick="login()" formtarget="_self"/>
+                            <input id="userlogin" class="btn btn-info" type="submit" name="log" value="登录" onclick="login()"/>
                         </div>
                     </form>
                 </div>

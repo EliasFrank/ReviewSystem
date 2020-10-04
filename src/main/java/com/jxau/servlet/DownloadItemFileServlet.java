@@ -14,7 +14,8 @@ import java.util.List;
 @WebServlet(name = "DownloadItemFileServlet", urlPatterns = "/DownloadItemFileServlet")
 public class DownloadItemFileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
+        download(request,response);
+        /*request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
         int itemId = Integer.parseInt(request.getParameter("itemId"));
         String itemFilePath = SelectService.getItemFilePath(itemId);
@@ -30,7 +31,7 @@ public class DownloadItemFileServlet extends HttpServlet {
                 words) {
             System.out.println(words);
         }
-        fis.close();
+        fis.close();*/
     }
 
     private void download(HttpServletRequest request, HttpServletResponse response) throws IOException {

@@ -9,15 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import com.jxau.domain.Choose;
 
-@WebServlet(name = "ChooseExpertServlet", urlPatterns = "/ChooseExpertServlet")
-public class ChooseExpertServlet extends HttpServlet {
+@WebServlet(name = "SelectAllUserServlet", urlPatterns = "/SelectAllUserServlet")
+public class SelectAllUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        System.out.println("i;m in");
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
-        JSONArray choices = JSONArray.fromObject(SelectService.selectChoose());
-        response.getWriter().print(choices);
+        JSONArray users = JSONArray.fromObject(SelectService.getAllUsers());
+        response.getWriter().print(users);
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request,response);
     }
 }

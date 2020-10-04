@@ -20,6 +20,22 @@ public class AccountDaoTest {
     }
 
     @Test
+    public void nmsl() {
+        new AccountDaoImpl().resetPwd("5");
+    }
+
+    @Test
+    public void test10() {
+        new AccountDaoImpl().delUser("10");
+    }
+
+    @Test
+    public void chsl() {
+        List<User> list =  new AccountDaoImpl().getAllUsers();
+        System.out.println(list);
+    }
+
+    @Test
     public void test02() {
         User user = new User();
         user.setNumber("2018162");

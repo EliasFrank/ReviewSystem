@@ -54,4 +54,14 @@ public class UpdateSrvice {
         }
         return true;
     }
+
+    public static void resetPwd(String id) {
+        AccountDaoImpl dao = new AccountDaoImpl();
+        dao.resetPwd(id);
+    }
+
+    public static void delUser(String id) {
+        AccountDaoImpl dao = new AccountDaoImpl();
+        dao.delUser(id);
+    }
 }

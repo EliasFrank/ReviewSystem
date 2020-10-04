@@ -1,3 +1,110 @@
+function resetPassword(id){
+    var xmlHttp = get();
+    xmlHttp.open("POST", "/ReviewSystem/ResetPwdServlet", true);
+
+    xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xmlHttp.send("id=" + id);
+    xmlHttp.onreadystatechange = function(){
+        if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
+            alert("重置成功");
+            selectAllUser();
+        }
+    };
+}
+function delUser(id){
+    var xmlHttp = get();
+    xmlHttp.open("POST", "/ReviewSystem/DelUserServlet", true);
+
+    xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xmlHttp.send("id=" + id);
+    xmlHttp.onreadystatechange = function(){
+        if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
+            alert("删除成功");
+            selectAllUser();
+        }
+    };
+}
+function selectAllUser(){
+    var xmlHttp = get();
+    xmlHttp.open("POST", "/ReviewSystem/SelectAllUserServlet", true);
+
+    xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xmlHttp.send();
+    xmlHttp.onreadystatechange = function(){
+        if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
+
+            var result = xmlHttp.responseText;
+            var users = eval("(" + result + ")");
+            addAllUser(users);
+        }
+    };
+}
+function addAllUser(users) {
+    var tbody = document.getElementById("originTab");
+    tbody.innerHTML = "";
+    for(var i = 0; i < users.length; i++){
+        var tr = document.createElement("tr");
+
+        var td = document.createElement("td");
+        var span = document.createElement("span");
+        span.appendChild(document.createTextNode(users[i].number));
+        td.appendChild(span);
+
+        var td2 = document.createElement("td");
+        var span2 = document.createElement("span");
+        span2.appendChild(document.createTextNode(users[i].password));
+        td2.appendChild(span2);
+
+        var td3 = document.createElement("td");
+        var span3 = document.createElement("span");
+        span3.appendChild(document.createTextNode(users[i].name));
+        td3.appendChild(span3);
+
+        var td4 = document.createElement("td");
+        var a = document.createElement("a");
+        a.appendChild(document.createTextNode("重置密码"));
+        var str = "resetPassword(" + users[i].userId + ")";
+        a.setAttribute("onclick", str);
+        a.setAttribute("class", "btn btn-danger");
+        td4.appendChild(a);
+
+        var td5 = document.createElement("td");
+        var b = document.createElement("a");
+        b.appendChild(document.createTextNode("删除用户"));
+        var str2 = "delUser(" + users[i].userId + ")";
+        b.setAttribute("onclick", str2);
+        b.setAttribute("class", "btn btn-danger");
+        td5.appendChild(b);
+
+        tr.appendChild(td);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tr.appendChild(td5);
+        tr.appendChild(td4);
+        tbody.appendChild(tr);
+    }
+}
+function chooseExpert() {
+    var xmlHttp = get();
+
+    xmlHttp.open("POST", "/ReviewSystem/ChooseExpertServlet", true);
+
+    xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xmlHttp.send();
+
+    xmlHttp.onreadystatechange = function(){
+        if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
+            var result = xmlHttp.responseText;
+            var choice = eval("(" + result + ")");
+            addChoose(choice);
+            getExperts(choice.length);
+        }
+    };
+}
 function agreeChooseExpert(userId, itemId, selectId){
     var select = document.getElementById("select" + selectId);
     var experts = "";
@@ -199,11 +306,9 @@ function addCheckUser(users) {
         td3.appendChild(span3);
 
         var td4 = document.createElement("td");
-        var a = document.createElement("a");
-        a.appendChild(document.createTextNode("同意成为专家"));
-        var str = "toBeExpert(" + users[i].userId + ")";
-        a.setAttribute("onclick", str);
-        a.setAttribute("class", "btn btn-info");
+        var a = document.createElement("hidden");
+        a.setAttribute("value", users[i].userId);
+        a.setAttribute("name", "expertsId");
         td4.appendChild(a);
 
         tr.appendChild(td);
