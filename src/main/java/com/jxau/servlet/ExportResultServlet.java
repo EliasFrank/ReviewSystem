@@ -24,7 +24,7 @@ public class ExportResultServlet extends HttpServlet {
          * 1.设置两个头
          * 2.获取流
          */
-        String filename = "排名.xlsx";
+        String filename = "ranks.xlsx";
         String ContentType = this.getServletContext().getMimeType(filename);
 
         String framename  = filename;
