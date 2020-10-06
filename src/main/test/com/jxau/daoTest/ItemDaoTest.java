@@ -28,6 +28,22 @@ public class ItemDaoTest {
     public void test04() {
         System.out.println(new ItemDaoImpl().getCheckItems(1));
     }
+
+    @Test
+    public void test20() {
+        System.out.println(new ItemDaoImpl().getResult("1"));
+    }
+
+    @Test
+    public void test22() {
+        System.out.println(SelectService.getResult("1"));
+    }
+
+    @Test
+    public void test21() {
+        System.out.println(new ItemDaoImpl().getExplain("1"));
+    }
+
     @Test
     public void test05() {
         Map<Integer, Object> map = SelectService.getItem("1");

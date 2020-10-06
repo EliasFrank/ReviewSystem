@@ -257,4 +257,79 @@ public class ItemDaoImpl {
             MySQLConnection.close(connection);
         }
     }
+
+    public ArrayList<ResultRank> getResult(String id) {
+        ArrayList<ResultRank> ranks = new ArrayList<ResultRank>();
+        //获取连接
+        Connection connection = new MySQLConnection().getConnection();
+
+        String sql = "SELECT AVG(totalGrade) grades,  itemName, `name` " +
+                "FROM `grade` g, check_item c " +
+                "where g.gameId = ?  " +
+                "and g.itemId = c.itemId " +
+                "GROUP BY g.itemId " +
+                "ORDER BY grades DESC;";
+
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+
+            pstmt.setString(1, id);
+            ResultSet rs = pstmt.executeQuery();
+
+            int rank = 1;
+            while(rs.next()) {
+                ResultRank grade = new ResultRank();
+                grade.setGrade(rs.getDouble("grades"));
+                grade.setItemName(rs.getString("itemName"));
+                grade.setUserName(rs.getString("name"));
+                grade.setRank(rank++);
+                ranks.add(grade);
+            }
+            rs.close();
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            //关闭数据库连接
+            MySQLConnection.close(connection);
+        }
+        return ranks;
+    }
+
+    public Map<String,  ArrayList<String>> getExplain(String id) {
+        Map<String, ArrayList<String>> map = new HashMap<String,  ArrayList<String>>();
+        //获取连接
+        Connection connection = new MySQLConnection().getConnection();
+
+        String sql = "SELECT `explain`, itemName " +
+                "FROM `grade` g, check_item c " +
+                "where g.gameId = ? " +
+                "and g.itemId = c.itemId";
+
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+
+            pstmt.setString(1, id);
+            ResultSet rs = pstmt.executeQuery();
+
+            while(rs.next()) {
+                String itemName = rs.getString("itemName");
+                if(map.containsKey(itemName)){
+                    map.get(itemName).add(rs.getString("explain"));
+                }else{
+                    ArrayList<String> temp = new ArrayList<String>();
+                    temp.add(rs.getString("explain"));
+                    map.put(itemName, temp);
+                }
+            }
+            rs.close();
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            //关闭数据库连接
+            MySQLConnection.close(connection);
+        }
+        return map;
+    }
 }

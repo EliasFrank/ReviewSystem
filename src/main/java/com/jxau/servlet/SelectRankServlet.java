@@ -20,6 +20,7 @@ public class SelectRankServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         List<GradeRank> ranks = SelectService.selectGradeRank(id);
+        request.setAttribute("id", id);
         request.setAttribute("ranks", ranks);
         request.getRequestDispatcher("/jsp/ranks.jsp").forward(request,response);
     }

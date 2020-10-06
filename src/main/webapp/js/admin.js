@@ -1,4 +1,7 @@
 var addCount = 0;
+function exportRank() {
+
+}
 function addUser() {
     var info = document.getElementsByClassName("input");
     var xmlHttp = get();
@@ -266,6 +269,27 @@ function toBeExpert() {
     xmlHttp.onreadystatechange = function(){
         if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
             alert("已授予专家身份");
+            selectAllCheck();
+        }
+    };
+}
+function notBeExpert() {
+    var toBes = document.getElementsByName("beOrNotBe");
+    var xmlHttp = get();
+    var ids = "";
+    for(var i = 0; i < toBes.length; i++){
+        if(toBes[i].checked == true)
+            ids += toBes[i].value + ",";
+    }
+    xmlHttp.open("POST", "/ReviewSystem/CheckExpertServlet", true);
+
+    xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xmlHttp.send("userflag=2&id=" + ids);
+
+    xmlHttp.onreadystatechange = function(){
+        if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
+            alert("已取消专家身份");
             selectAllCheck();
         }
     };

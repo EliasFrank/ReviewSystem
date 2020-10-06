@@ -48,11 +48,7 @@
                         <ul class="nav navbar-nav" id="mytab" role="tablist">
                             <li class="active" role="presentation"><a href="professor.jsp">主页</a></li>
                             <li role="presentation"><a href="professor.jsp" ></a></li>
-                            
                         </ul>
-        
-                    
-        
                         <form class="navbar-form navbar-left" role="search">
                             <div class="form-group">
                                 <input type="text" placeholder="搜索" class="form-control">
@@ -73,7 +69,6 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">More<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="menuitem"><a href="#">python</a></li>
-
                                 </ul>
                             </li>
                         </ul>
@@ -89,15 +84,14 @@
                 <p>
                     在下方你可以为申请的项目进行查看和导出。
                 </p>
-    
             </div>
-        
             <div class="col-md-1"></div>
             <div class="col-md-10 project-info">
                 <h1>本项目的所有排名</h1>
                 <table id="rank" border="1" class="table table-hover">
                     <thead>
                         <tr>
+                            <td></td>
                             <td>项目名称</td>
                             <td>作者姓名</td>
                             <td>分数</td>
@@ -105,6 +99,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <%--<tr><input type="hidden" value="${id}" name="id"></tr>--%>
                         <c:forEach items="${requestScope.ranks}" var="grade">
                             <tr>
                                 <td>${grade.itemName}</td>
@@ -114,19 +109,14 @@
                             </tr>
                         </c:forEach>
                     </tbody>
-                        
                 </table><br/>
-                
             </div>
-
             <div class="col-md-1"></div>
-            
-            
         </div>
         <br>
         <div class="col-md-1"></div>
         <div class="text-right col-md-10">
-            <input class="btn btn-info" type="button" onclick="exportRank()" value="导出结果">
+            <span><a href="/ReviewSystem/ExportResultServlet?id=${id}">导出</a></span>
         </div>
         <div class="col-md-1"></div>
 

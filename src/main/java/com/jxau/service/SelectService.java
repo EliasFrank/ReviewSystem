@@ -6,9 +6,21 @@ import com.jxau.daoImpl.GradesImpl;
 import com.jxau.daoImpl.ItemDaoImpl;
 import com.jxau.domain.*;
 
+import java.io.InputStream;
+import java.util.*;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
+import com.jxau.myUtils.ExcelFormatUtil;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.xssf.streaming.SXSSFCell;
+import org.apache.poi.xssf.streaming.SXSSFRow;
+import org.apache.poi.xssf.streaming.SXSSFSheet;
+import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 
 public class SelectService {
     public static List<User> selectAllCheckUser(){
@@ -98,5 +110,86 @@ public class SelectService {
 
     public static ArrayList<User> getAllUsers() {
         return new AccountDaoImpl().getAllUsers();
+    }
+
+    public static InputStream getResult(String id) {
+        ArrayList<ResultRank> ranks = new ItemDaoImpl().getResult(id);
+        Map<String,  ArrayList<String>> explains = new ItemDaoImpl().getExplain(id);
+        for (ResultRank rank : ranks) {
+            rank.setOpinion(explains.get(rank.getItemName()));
+        }
+        InputStream is = export(ranks);
+        return is;
+//        return null;
+    }
+
+    private static InputStream export(List<ResultRank> list) {
+
+        ByteArrayOutputStream output = null;
+        InputStream inputStream1 = null;
+        SXSSFWorkbook wb = new SXSSFWorkbook(1000);// 保留1000条数据在内存中
+        SXSSFSheet sheet = wb.createSheet();
+        // 设置报表头样式
+        CellStyle header = ExcelFormatUtil.headSytle(wb);// cell样式
+        CellStyle content = ExcelFormatUtil.contentStyle(wb);// 报表体样式
+
+        // 每一列字段名
+        String[] strs = new String[] {"排名", "项目名", "用户名", "成绩", "评语"};
+
+        // 字段名所在表格的宽度
+        int[] ints = new int[] { 5000, 5000, 5000, 5000, 20000 };
+
+        // 设置表头样式
+        ExcelFormatUtil.initTitleEX(sheet, header, strs, ints);
+        //logger.info(">>>>>>>>>>>>>>>>>>>>表头样式设置完成>>>>>>>>>>");
+
+        for (ResultRank rank : list) {
+            System.out.println(rank);
+        }
+        System.out.println(list.size());
+       for (int i = 0; i < list.size(); i++) {
+            ResultRank rr = list.get(i);
+            SXSSFRow row = sheet.createRow(i + 1);
+            int j = 0;
+
+            SXSSFCell cell = row.createCell(j++);
+            cell.setCellValue(rr.getRank()); // 排名
+            cell.setCellStyle(content);
+
+            cell = row.createCell(j++);
+            cell.setCellValue(rr.getItemName()); // 项目名
+            cell.setCellStyle(content);
+
+            cell = row.createCell(j++);
+            cell.setCellValue(rr.getUserName()); // 用户名
+            cell.setCellStyle(content);
+
+            cell = row.createCell(j++);
+            cell.setCellValue(rr.getGrade()); // 成绩
+            cell.setCellStyle(content);
+
+            cell = row.createCell(j++);
+            cell.setCellValue(rr.getOpinion().toString()); // 评语
+            cell.setCellStyle(content);
+       }
+        try {
+            output = new ByteArrayOutputStream();
+            wb.write(output);
+            inputStream1 = new ByteArrayInputStream(output.toByteArray());
+            output.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (output != null) {
+                    output.close();
+                    if (inputStream1 != null)
+                        inputStream1.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return inputStream1;
     }
 }
