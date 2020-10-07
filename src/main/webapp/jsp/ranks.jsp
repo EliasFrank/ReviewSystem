@@ -119,9 +119,6 @@
             <span><a href="/ReviewSystem/ExportResultServlet?id=${id}">导出</a></span>
         </div>
         <div class="col-md-1"></div>
-
     </div>
-   
 </body>
-<script src="/ReviewSystem/js/ranks.js"></script>
 </html>
