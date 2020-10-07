@@ -14,7 +14,7 @@ import java.util.List;
 @WebServlet(name = "DownloadItemFileServlet", urlPatterns = "/DownloadItemFileServlet")
 public class DownloadItemFileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //download(request,response);
+        download(request,response);
         /*request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
         int itemId = Integer.parseInt(request.getParameter("itemId"));

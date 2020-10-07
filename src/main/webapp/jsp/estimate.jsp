@@ -130,7 +130,7 @@
                         <tr>
                             <td><span>${items.itemName}</span></td>
                             <td><span>${intro}</span></td>
-                            <td><span><a href="/ReviewSystem/DownloadItemFileServlet?itemId=${items.itemId}" target="_blank">点击查看</a></span></td>
+                            <td><span><a href="/ReviewSystem/DownloadItemFileServlet?itemId=${items.itemId}" target="_blank">下载后查看</a></span></td>
                          </tr>
                         </tbody>
                     </table>
