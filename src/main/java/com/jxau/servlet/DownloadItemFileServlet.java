@@ -51,6 +51,8 @@ public class DownloadItemFileServlet extends HttpServlet {
         int index = filename.lastIndexOf("/");
         if(index != -1)
             framename = filename.substring(index+1);
+        if(framename == null || "".equals(framename))
+            framename = "word";
         String ContentDisposition = "attachment;filename=" + framename;
 
         response.setHeader("Content-Type", ContentType);
