@@ -36,7 +36,7 @@ public class UserListener implements ServletContextListener,
     // HttpSessionListener implementation
     // -------------------------------------------------------
     public void sessionCreated(HttpSessionEvent se) {
-        /*HttpSession session = se.getSession();
+        HttpSession session = se.getSession();
         User user = new User();
         user.setName("陈豪");
         user.setUserId("1");
@@ -45,7 +45,7 @@ public class UserListener implements ServletContextListener,
         user.setUserflag(1);
         user.setEmail("1");
         user.setTel("1");
-        session.setAttribute("user", user);*/
+        session.setAttribute("user", user);
     }
 
     public void sessionDestroyed(HttpSessionEvent se) {

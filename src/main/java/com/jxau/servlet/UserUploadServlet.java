@@ -47,6 +47,14 @@ public class UserUploadServlet extends HttpServlet {
                     int index = filename.lastIndexOf("\\");
                     if(index != -1)
                         filename = filename.substring(index+1);
+                    if(!filename.endsWith("pdf")){
+                        response.getWriter().print("<script language='javascript'>alert('只能上传PDF文件');window.location.href='jsp/userPage.jsp';</script>");
+                        return;
+                    }
+                    if(item.getSize() > 50*1024*1024){
+                        response.getWriter().print("<script language='javascript'>alert('文件过大');window.location.href='jsp/userPage.jsp';</script>");
+                        return;
+                    }
                     try {
                         if("".equals(filename)){
                             map.put("annex", "");

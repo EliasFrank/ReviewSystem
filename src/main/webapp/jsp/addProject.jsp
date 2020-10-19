@@ -138,8 +138,8 @@
                         <tbody class="">
                         <tr>
                             <td><span class="star">*</span></td>
-                            <td><span>项目企划书</span></td>
-                            <td><input type="file" class="" id="exampleInputFile" name="file"></td>
+                            <td><span>项目企划书<p style="color:red">(请上传40M以内的pdf文档)</p></span></td>
+                            <td><input type="file" class="" id="exampleInputFile" name="file" accept=”application/pdf” ></td>
                             <td><small></small></td>
                         </tr>
                         </tbody>
