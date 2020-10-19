@@ -130,7 +130,7 @@
                         <tr>
                             <td><span>${items.itemName}</span></td>
                             <td><span>${intro}</span></td>
-                            <td><span><a href="/ReviewSystem/DownloadItemFileServlet?itemId=${items.itemId}" target="_blank">下载后查看</a></span></td>
+                            <td><span><a onclick="detail()" href="" target="_blank">查看</a></span></td>
                          </tr>
                         </tbody>
                     </table>
@@ -179,7 +179,14 @@
     <script src="/ReviewSystem/js/jquery-3.4.1.min.js"></script>
     <script src="/ReviewSystem/js/bootstrap.min.js"></script>
     <script src="/ReviewSystem/js/estimate.js"></script>
+    <script type="text/javascript" src="/ReviewSystem/pdfjs/build/pdf.js"></script>
+
     <!-- <script src="js/scripts.js"></script> -->
   </body>
 </c:if>
+<script>
+    function detail() {
+        window.open("/ReviewSystem/pdfjs/web/viewer.html?file=" + encodeURIComponent("/ReviewSystem/DownloadItemFileServlet?itemId=${items.itemId}"));
+    }
+</script>
 </html>

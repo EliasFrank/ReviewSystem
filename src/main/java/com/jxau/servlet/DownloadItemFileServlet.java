@@ -14,24 +14,24 @@ import java.util.List;
 @WebServlet(name = "DownloadItemFileServlet", urlPatterns = "/DownloadItemFileServlet")
 public class DownloadItemFileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        download(request,response);
-        /*request.setCharacterEncoding("utf-8");
+        //download(request,response);
+        request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
         int itemId = Integer.parseInt(request.getParameter("itemId"));
         String itemFilePath = SelectService.getItemFilePath(itemId);
+        byte[] data = null;
+        try {
+            FileInputStream fis = new FileInputStream(itemFilePath);
+            OutputStream fos = response.getOutputStream();
 
-        BufferedReader fis = new BufferedReader(new InputStreamReader(new FileInputStream(itemFilePath)));
-        List<String> words = new ArrayList<>();
-
-        byte[] b = new byte[1024];
-        String line = null;
-        while((line = fis.readLine()) != null)
-            words.add(line);
-        for (String s :
-                words) {
-            System.out.println(words);
+            byte[] b = new byte[1024];
+            int num = 0;
+            while((num = fis.read(b)) != -1)
+                fos.write(b, 0, num);
+            fis.close();
+        } catch (Exception e) {
+            System.out.println("pdf文件处理异常：" + e);
         }
-        fis.close();*/
     }
 
     private void download(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -67,7 +67,6 @@ public class DownloadItemFileServlet extends HttpServlet {
             fos.write(b, 0, num);
 
         fis.close();
-//        request.getRequestDispatcher("/")
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

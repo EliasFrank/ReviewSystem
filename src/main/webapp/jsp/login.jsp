@@ -39,7 +39,7 @@
                         <h2>登录</h2>
                     </center>
                     <br>
-                    <form method="POST" target="hidden" id="loginForm">
+                    <form method="POST" id="loginForm">
                         <div class="input-group input-group-lg">
                             <input type="text" class="form-control well well-lg infos" placeholder="用户名" name="UserName" id="UserName">
                             <span class="input-group-addon glyphicon glyphicon-exclamation-sign btn btn-link" aria-hidden="true" data-toggle="tooltip" data-placement="left" title="忘记用户名"><a href=""></a></span>
