@@ -60,11 +60,11 @@ public class UserUploadServlet extends HttpServlet {
                             map.put("annex", "");
                             continue;
                         }
-//                        File file = new File("/data/reviewSystem", filename);
-//                        for(int i = 1;file.exists(); i++)
-//                            file = new File("/data/reviewSystem", i + filename);
-//                        map.put("annex", file.getAbsolutePath());
-//                        item.write(file);
+                        File file = new File("/data/reviewSystem", filename);
+                        for(int i = 1;file.exists(); i++)
+                            file = new File("/data/reviewSystem", i + filename);
+                        map.put("annex", file.getAbsolutePath());
+                        item.write(file);
                     }catch (Exception e){
                         e.printStackTrace();
                     }
