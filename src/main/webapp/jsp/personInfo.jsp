@@ -202,20 +202,7 @@
 
 
 </div>
-<div class="navbar navbar-fixed-bottom">
-    <div class="container">
-        <div class="text-center">
-            <br>
-            <ul class="list-inline">
-                <li>@ JXAU</li>
-                <li>|</li>
-                <li><a href="#" class="text-danger">使用条款</a></li>
-                <li>|</li>
-                <li><a href="#" class="text-danger">隐私政策</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+
 
     <script src="/ReviewSystem/js/jquery-3.4.1.min.js"></script>
     <script src="/ReviewSystem/js/bootstrap.min.js"></script>

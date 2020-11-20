@@ -73,48 +73,48 @@
                                 <td></td>
                             </tr>
                         </tbody>
-                            <tr class="">
+                            <%--<tr class="">
                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                 <td><span class="">用户账号</span></td>
                                 <td><input id="inputName" class="infos form-control" type="text"  name="UserName" /> </td>
                                 <td><small>您的用户账号可以用来登录账户使用(8位的纯数字)</small></td>
+                            </tr>--%>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td id="userError" class="text-danger"></td>
+                                <td></td>
                             </tr>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td id="userError" class="text-danger"></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                            <tr class="">
-                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                <td><span class="">设置密码</span></td>
-                                <td><input id="inputPwd" class="infos form-control" type="password"  name="Password" /> </td>
-                                <td><small>密码必须包含字母和至少 1 个数字</small></td>
+                        </tbody>
+                        <tr class="">
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td><span class="">设置密码</span></td>
+                            <td><input id="inputPwd" class="infos form-control" type="password"  name="Password" /> </td>
+                            <td><small>密码必须包含字母和至少 1 个数字</small></td>
+                        </tr>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td id="pwdError" class="text-danger"></td>
+                                <td></td>
                             </tr>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td id="pwdError" class="text-danger"></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                            <tr class="">
-                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                <td><span class="">再次输入密码</span></td>
-                                <td><input id="inputSame" class="infos form-control" type="password"  name="Password" /> </td>
-                                <td><small></small></td>
+                        </tbody>
+                        <tr class="">
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td><span class="">再次输入密码</span></td>
+                            <td><input id="inputSame" class="infos form-control" type="password"  name="Password" /> </td>
+                            <td><small></small></td>
+                        </tr>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td id="sameError" class="text-danger"></td>
+                                <td></td>
                             </tr>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td id="sameError" class="text-danger"></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
+                        </tbody>
                             <!-- <tr class="">
                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                 <td><span class="">电话</span></td>
@@ -129,24 +129,24 @@
                                     <td></td>
                                 </tr>
                             </tbody> -->
-                            <tr class="">
-                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                <td><span class="">姓名</span></td>
-                                <td><input class="infos form-control" type="text" placeholder="" name="RealName" id="RealName"/> </td>
-                                <td><small></small></td>
-                            </tr>
-                            
-                            <tr>
-                                <td></td>
-                            </tr>
+                        <tr class="">
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td><span class="">姓名</span></td>
+                            <td><input class="infos form-control" type="text" placeholder="" name="RealName" id="RealName"/> </td>
+                            <td><small></small></td>
+                        </tr>
 
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td><input class="btn btn-success" type="submit" value="注册" onclick="register()"></td>
-                                
-                                <td></td>
-                            </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><input class="btn btn-success" type="submit" value="注册" onclick="register()"></td>
+
+                            <td></td>
+                        </tr>
                         </tbody>
                     </table>
                 </form>

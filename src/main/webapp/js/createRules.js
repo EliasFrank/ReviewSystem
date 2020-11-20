@@ -5,13 +5,13 @@ function storeGame() {
 }
 function addGame() {
    var type = document.getElementById("type").value;
-    if(type.length > 10 || myTrim(type) == ""){
-        alert("项目类型必须在10字以内，且不能为空或全是空格");
+    if(type.length > 20 || myTrim(type) == ""){
+        alert("项目类型必须在20字以内，且不能为空或全是空格");
         return;
     }
     var name = document.getElementById("name").value;
-    if(name.length > 10 || myTrim(name) == ""){
-        alert("项目名必须在10字以内，且不能为空或全是空格");
+    if(name.length > 20 || myTrim(name) == ""){
+        alert("项目名必须在20字以内，且不能为空或全是空格");
         return;
     }
     var welcome = document.getElementById("welcome").value;
@@ -87,7 +87,7 @@ function add(){
     var td3 = document.createElement("td");
     td3.innerHTML = "<input type='text' class='form-control' placeholder='评分标准名' name='standard' id='standard"+n+"'>";
     var td4 = document.createElement("td");
-    td4.innerHTML = "<input type='text' class='form-control' placeholder='分数占比' name='standardGrade' id='standardGrade"+n+"'>";
+    td4.innerHTML = "<input type='text' class='form-control' placeholder='此项总分' name='standardGrade' id='standardGrade"+n+"'>";
     tr.appendChild(td1);
     tr.appendChild(td2);
     tr.appendChild(td3);

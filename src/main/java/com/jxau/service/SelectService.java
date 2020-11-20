@@ -48,7 +48,9 @@ public class SelectService {
     public static int getGameId() {
         return new GameDaoImpl().getGameId();
     }
-
+    public static int getStoreGameId() {
+        return new GameDaoImpl().getGameId();
+    }
     public static List<UserApply> selectUserApply() {
         return new AccountDaoImpl().selectUserApply();
     }
@@ -143,10 +145,6 @@ public class SelectService {
         ExcelFormatUtil.initTitleEX(sheet, header, strs, ints);
         //logger.info(">>>>>>>>>>>>>>>>>>>>表头样式设置完成>>>>>>>>>>");
 
-        for (ResultRank rank : list) {
-            System.out.println(rank);
-        }
-        System.out.println(list.size());
        for (int i = 0; i < list.size(); i++) {
             ResultRank rr = list.get(i);
             SXSSFRow row = sheet.createRow(i + 1);

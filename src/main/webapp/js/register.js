@@ -32,13 +32,13 @@ function checkPwd(value){
     if(value.length < 8 || value.length > 16) {
         return 1;
       }
-      else if((ptr_digit.test(value) && ptr_lowcase.test(value) && ptr_special.test(value))
-              || (!ptr_digit.test(value) && ptr_lowcase.test(value) && ptr_special.test(value))
-              || (ptr_digit.test(value) && !ptr_lowcase.test(value) && ptr_special.test(value))
-              || (ptr_digit.test(value) && ptr_lowcase.test(value) && ptr_special.test(value))
-              || (ptr_digit.test(value) && ptr_lowcase.test(value) && !ptr_special.test(value))){
-       return 3;
-      }
+      // else if((ptr_digit.test(value) && ptr_lowcase.test(value) && ptr_special.test(value))
+      //         || (!ptr_digit.test(value) && ptr_lowcase.test(value) && ptr_special.test(value))
+      //         || (ptr_digit.test(value) && !ptr_lowcase.test(value) && ptr_special.test(value))
+      //         || (ptr_digit.test(value) && ptr_lowcase.test(value) && ptr_special.test(value))
+      //         || (ptr_digit.test(value) && ptr_lowcase.test(value) && !ptr_special.test(value))){
+      //  return 3;
+      // }
       else {
         return 2;
       }
@@ -61,20 +61,20 @@ function register(){
     else{
         document.getElementById("telError").innerHTML = "";
     }
-    if(!checkUser(document.getElementById("inputName").value)){
-        document.getElementById("userError").innerHTML = "用户名格式错误";
-        return;
-    }
-    else{
-        document.getElementById("userError").innerHTML = "";
-    }
+    // if(!checkUser(document.getElementById("inputName").value)){
+    //     document.getElementById("userError").innerHTML = "用户名格式错误";
+    //     return;
+    // }
+    // else{
+    //     document.getElementById("userError").innerHTML = "";
+    // }
     if(checkPwd(document.getElementById("inputPwd").value) == 1){
         document.getElementById("pwdError").innerHTML = "密码8-16位";
         return;
-    }else if(checkPwd(document.getElementById("inputPwd").value) == 2){
-
-        document.getElementById("pwdError").innerHTML = "至少包含大写字母、小写字母、数字、特殊字符中的三类字符";
-        return;
+    // }else if(checkPwd(document.getElementById("inputPwd").value) == 2){
+    //
+    //     document.getElementById("pwdError").innerHTML = "至少包含大写字母、小写字母、数字、特殊字符中的三类字符";
+    //     return;
     }else{
         document.getElementById("pwdError").innerHTML = "";
     }

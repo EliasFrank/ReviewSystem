@@ -18,6 +18,7 @@ public class UserListener implements ServletContextListener,
     // -------------------------------------------------------
     // ServletContextListener implementation
     // -------------------------------------------------------
+    @Override
     public void contextInitialized(ServletContextEvent sce) {
       /* This method is called when the servlet context is
          initialized(when the Web application is deployed). 
@@ -25,6 +26,7 @@ public class UserListener implements ServletContextListener,
       */
     }
 
+    @Override
     public void contextDestroyed(ServletContextEvent sce) {
       /* This method is invoked when the Servlet Context 
          (the Web application) is undeployed or 
@@ -35,6 +37,7 @@ public class UserListener implements ServletContextListener,
     // -------------------------------------------------------
     // HttpSessionListener implementation
     // -------------------------------------------------------
+    @Override
     public void sessionCreated(HttpSessionEvent se) {
         /*HttpSession session = se.getSession();
         User user = new User();
@@ -48,6 +51,7 @@ public class UserListener implements ServletContextListener,
         session.setAttribute("user", user);*/
     }
 
+    @Override
     public void sessionDestroyed(HttpSessionEvent se) {
         /* Session is destroyed. */
     }
@@ -56,18 +60,21 @@ public class UserListener implements ServletContextListener,
     // HttpSessionAttributeListener implementation
     // -------------------------------------------------------
 
+    @Override
     public void attributeAdded(HttpSessionBindingEvent sbe) {
       /* This method is called when an attribute 
          is added to a session.
       */
     }
 
+    @Override
     public void attributeRemoved(HttpSessionBindingEvent sbe) {
       /* This method is called when an attribute
          is removed from a session.
       */
     }
 
+    @Override
     public void attributeReplaced(HttpSessionBindingEvent sbe) {
       /* This method is invoked when an attibute
          is replaced in a session.

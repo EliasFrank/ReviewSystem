@@ -41,13 +41,14 @@
                     <br>
                     <form method="POST" id="loginForm">
                         <div class="input-group input-group-lg">
-                            <input type="text" class="form-control well well-lg infos" placeholder="用户名" name="UserName" id="UserName">
+                            <input type="text" class="form-control well well-lg infos" placeholder="手机号码" name="UserName" id="UserName">
                             <span class="input-group-addon glyphicon glyphicon-exclamation-sign btn btn-link" aria-hidden="true" data-toggle="tooltip" data-placement="left" title="忘记用户名"><a href=""></a></span>
                         </div>
                         <br>
                         <div class="input-group input-group-lg">
                             <input type="password" class="form-control well well-lg infos" placeholder="密码" name="Password" id="Password">
-                             <a class="input-group-addon glyphicon glyphicon-exclamation-sign btn btn-link" aria-hidden="true" data-toggle="tooltip" data-placement="left" title="忘记密码" href="forgetPwd.jsp"></a>
+<%--                             <a class="input-group-addon glyphicon glyphicon-exclamation-sign btn btn-link" aria-hidden="true" data-toggle="tooltip" data-placement="left" title="忘记密码" href="forgetPwd.jsp"></a>--%>
+                             <a class="input-group-addon glyphicon glyphicon-exclamation-sign btn btn-link" aria-hidden="false" data-toggle="" data-placement="" title="" href=""></a>
                         </div>
                         <br>
                         <!-- <div class="input-group">

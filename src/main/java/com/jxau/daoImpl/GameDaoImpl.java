@@ -15,15 +15,15 @@ public class GameDaoImpl implements GamesDao {
         String sql = "INSERT INTO `games_copy` (`userId`, `gameId`, `gameName`, `welcome`, `type`, `introduction`, `annex`, `startTime`, `endTime`) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement pstmt = con.prepareStatement(sql);
-        pstmt.setInt(1, game.getGameId());
-        pstmt.setString(2, game.getGameName());
-        pstmt.setString(3, game.getWelcome());
-        pstmt.setString(4, game.getType());
-        pstmt.setString(5, game.getIntroduction());
-        pstmt.setString(6, game.getAnnex());
-        pstmt.setDate(7, game.getStartTime());
-        pstmt.setDate(8, game.getEndTime());
-
+        pstmt.setInt(1,Integer.parseInt(userId));
+        pstmt.setInt(2, game.getGameId());
+        pstmt.setString(3, game.getGameName());
+        pstmt.setString(4, game.getWelcome());
+        pstmt.setString(5, game.getType());
+        pstmt.setString(6, game.getIntroduction());
+        pstmt.setString(7, game.getAnnex());
+        pstmt.setDate(8, game.getStartTime());
+        pstmt.setDate(9, game.getEndTime());
 
         pstmt.executeUpdate();
         pstmt.close();
@@ -120,7 +120,7 @@ public class GameDaoImpl implements GamesDao {
         //获取连接
         Connection connection = new MySQLConnection().getConnection();
 
-        String sql = "SELECT MAX(gameId) FROM `games`";
+        String sql = "SELECT MAX(id) FROM `games_copy`";
 
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
@@ -238,7 +238,8 @@ public class GameDaoImpl implements GamesDao {
         Connection connection = new MySQLConnection().getConnection();
         Game game = new Game();
 
-        String sql = "SELECT * FROM `games_copy` where userId=?";
+        String sql = "select * from games_copy where userId=?" +
+                " ORDER BY id desc limit 1; ";
 
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);

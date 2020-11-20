@@ -24,6 +24,7 @@ import java.util.List;
 
 @WebServlet(name = "StoreGameServlet", urlPatterns = "/StoreGameServlet")
 public class StoreGameServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
@@ -59,7 +60,7 @@ public class StoreGameServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        int id = SelectService.getGameId();
+        int id = SelectService.getStoreGameId();
         Part[] part = new Part[standards.size()];
         for(int i = 0; i < part.length; i++){
             part[i] = new Part();
@@ -81,7 +82,6 @@ public class StoreGameServlet extends HttpServlet {
         AddService.storeGame(game, part, userId);
 
         response.getWriter().print("<script language='javascript'>alert('暂存成功');window.location.href='jsp/admin.jsp';</script>");
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

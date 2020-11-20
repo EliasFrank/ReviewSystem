@@ -17,7 +17,7 @@ import java.util.List;
 public class AccountDaoImpl implements AccountDao {
     @Override
     public void addUserApply(int parseInt, int gameId) {
-        Connection connection = new MySQLConnection().getConnection();
+        Connection connection = MySQLConnection.getConnection();
 
         String sql = "INSERT INTO `check` (`userId`, `gameId`, `isCheck`) VALUES (?, ?, '0')";
 
@@ -74,7 +74,7 @@ public class AccountDaoImpl implements AccountDao {
     public List<User> selectExpert() {
         ArrayList<User> experts = new ArrayList<User>();
 
-        Connection connection = new MySQLConnection().getConnection();
+        Connection connection =MySQLConnection.getConnection();
 
         String sql = "select userId, `name` from `user` where userflag = 1;";
 
@@ -103,7 +103,7 @@ public class AccountDaoImpl implements AccountDao {
     public List<Choose> selectChoose() {
         ArrayList<Choose> chooses = new ArrayList<Choose>();
 
-        Connection connection = new MySQLConnection().getConnection();
+        Connection connection = MySQLConnection.getConnection();
 
         String sql = "select i.userId, u.`name`, i.itemName, g.gameName, i.submitTime, i.itemId  " +
                 "from `user` u, items i, games g " +
@@ -158,7 +158,7 @@ public class AccountDaoImpl implements AccountDao {
     public List<UserApply> selectUserApply() {
         ArrayList<UserApply> applys = new ArrayList<UserApply>();
 
-        Connection connection = new MySQLConnection().getConnection();
+        Connection connection = MySQLConnection.getConnection();
 
         String sql = "select c.id, u.userId, u.name, u.number, g.gameId, g.gameName,g.type " +
                 "from `check` c, `user` u, games g " +
@@ -193,7 +193,7 @@ public class AccountDaoImpl implements AccountDao {
 
     @Override
     public User selectUser(User user) {
-        Connection connection = new MySQLConnection().getConnection();
+        Connection connection = MySQLConnection.getConnection();
 
         String sql = "select * from `user` where number = ? or tel = ? and password = ?";
 

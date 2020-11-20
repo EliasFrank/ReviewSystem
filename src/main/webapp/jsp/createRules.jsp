@@ -138,8 +138,11 @@
                         <tr name="">
                             <td><span class="star">*</span></td>
                             <td><span>项目评分标准（不超过十项）</span></td>
-                            <td><input type="text" class="form-control" placeholder="评分标准名" name="standard" id="standard${part.id}" value="${part.explain}"></td>
-                            <td><input type="text" class="form-control" placeholder="评分标准名" name="standard" id="standardGrade${part.id}" value="${part.grade}"></td>
+<%--                            <td><input type="text" class="form-control" placeholder="评分标准名" name="standard" id="standard${part.id}" value="${part.explain}"></td>--%>
+<%--                            <td><input type="text" class="form-control" placeholder="此项总分" name="standardGrade" id="standardGrade${part.id}" value="${part.grade}"></td>--%>
+<%--                            <td><span></span></td>--%>
+<%--                            <td><span></span></td>--%>
+<%--                            <td><input type="text" class="form-control" placeholder="此项总分" name="standardGrade" id="standardGrade${part.id}" value="${part.grade}"></td>--%>
                             <td><button class="btn btn-info" type="button" id="add">添加</button><button class="btn btn-danger" type="button" id="del">删除</button></td>
                         </tr>
 

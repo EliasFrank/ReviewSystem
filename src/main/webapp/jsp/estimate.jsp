@@ -130,7 +130,7 @@
                         <tr>
                             <td><span>${items.itemName}</span></td>
                             <td><span>${intro}</span></td>
-                            <td><span><a onclick="detail()" href="" target="_blank">查看</a></span></td>
+                            <td><span><a onclick="detail()" target="_blank">查看</a></span></td>
                          </tr>
                         </tbody>
                     </table>
