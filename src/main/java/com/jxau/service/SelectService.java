@@ -129,7 +129,7 @@ public class SelectService {
 
         ByteArrayOutputStream output = null;
         InputStream inputStream1 = null;
-        SXSSFWorkbook wb = new SXSSFWorkbook(1000);// 保留1000条数据在内存中
+        SXSSFWorkbook wb = new SXSSFWorkbook(100);// 保留1000条数据在内存中
         SXSSFSheet sheet = wb.createSheet();
         // 设置报表头样式
         CellStyle header = ExcelFormatUtil.headSytle(wb);// cell样式

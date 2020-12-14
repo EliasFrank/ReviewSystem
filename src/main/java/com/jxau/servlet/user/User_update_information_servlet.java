@@ -26,7 +26,6 @@ public class User_update_information_servlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String tel = request.getParameter("tel");
 		User user = new User(userId, userNumber, userPassword, Integer.parseInt(userFlag), email, name, tel);
-		System.out.println(user);
 		boolean result  = UserDao.update(user,Integer.parseInt(userId));
 		if(result) {
 			PrintWriter out = response.getWriter();

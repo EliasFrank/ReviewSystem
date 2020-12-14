@@ -160,7 +160,7 @@
                                     </div>       
                                         <div>
 							      			  	<input type="submit" class="btn btn-info" value="提交">
-    									</div>>                       
+    									</div>
                                 </div>       
                                       	           
                             </form>
