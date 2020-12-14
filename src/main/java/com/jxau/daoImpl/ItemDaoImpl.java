@@ -299,7 +299,7 @@ public class ItemDaoImpl {
     public Map<String,  ArrayList<String>> getExplain(String id) {
         Map<String, ArrayList<String>> map = new HashMap<String,  ArrayList<String>>();
         //获取连接
-        Connection connection = new MySQLConnection().getConnection();
+        Connection connection = MySQLConnection.getConnection();
 
         String sql = "SELECT `explain`, itemName " +
                 "FROM `grade` g, check_item c " +

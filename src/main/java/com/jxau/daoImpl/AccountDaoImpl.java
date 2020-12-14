@@ -195,7 +195,7 @@ public class AccountDaoImpl implements AccountDao {
     public User selectUser(User user) {
         Connection connection = MySQLConnection.getConnection();
 
-        String sql = "select * from `user` where number = ? or tel = ? and password = ?";
+        String sql = "select * from `user` where (number = ? or tel = ?) and password = ?";
 
         User selectUser = null;
         try {
