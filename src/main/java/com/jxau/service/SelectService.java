@@ -149,7 +149,6 @@ public class SelectService {
             ResultRank rr = list.get(i);
             SXSSFRow row = sheet.createRow(i + 1);
             int j = 0;
-
             SXSSFCell cell = row.createCell(j++);
             cell.setCellValue(rr.getRank()); // 排名
             cell.setCellStyle(content);
@@ -167,7 +166,7 @@ public class SelectService {
             cell.setCellStyle(content);
 
             cell = row.createCell(j++);
-            cell.setCellValue(rr.getOpinion().toString()); // 评语
+            cell.setCellValue(rr.getOpinion().get(0)); // 评语
             cell.setCellStyle(content);
        }
         try {
