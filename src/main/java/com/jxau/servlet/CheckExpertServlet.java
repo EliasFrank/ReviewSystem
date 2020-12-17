@@ -15,8 +15,11 @@ public class CheckExpertServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
         String allId = request.getParameter("id");
+        if (allId == null || "".equals(allId)){
+            response.getWriter().print("尚未选择用户，请重新选择");
+            return ;
+        }
         String[] ids = allId.split(",");
-
         UpdateSrvice.checkAddExpert(ids, request.getParameter("userflag"));
     }
 

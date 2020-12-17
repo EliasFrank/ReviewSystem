@@ -4,6 +4,10 @@ function exportRank() {
 }
 function addUser() {
     var info = document.getElementsByClassName("input");
+    if (info[0].value === "" || info[1].value === "" || info[2].value === ""){
+        alert("请填写账号信息");
+        return;
+    }
     var xmlHttp = get();
     xmlHttp.open("POST", "/ReviewSystem/AddUserServlet", true);
 
@@ -139,6 +143,10 @@ function agreeChooseExpert(userId, itemId, selectId){
         if (select.options[i].selected == true)
             experts += select.options[i].value + ",";
     }
+    if(experts == ""){
+        alert("请选择专家");
+        return;
+    }
     var xmlHttp = get();
 
     xmlHttp.open("POST", "/ReviewSystem/DistributeExpertServlet", true);
@@ -254,6 +262,10 @@ function addChoose(choice) {
 }
 function toBeExpert() {
     var toBes = document.getElementsByName("beOrNotBe");
+    if (toBes.length == 0){
+        alert("请选择专家");
+        return ;
+    }
     var xmlHttp = get();
     var ids = "";
     for(var i = 0; i < toBes.length; i++){
@@ -268,13 +280,21 @@ function toBeExpert() {
 
     xmlHttp.onreadystatechange = function(){
         if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
-            alert("已授予专家身份");
+            var result = xmlHttp.responseText;
+            if(result != "")
+                alert(result);
+            else
+                alert("已授予专家身份");
             selectAllCheck();
         }
     };
 }
 function notBeExpert() {
     var toBes = document.getElementsByName("beOrNotBe");
+    if (toBes.length == 0){
+        alert("请选择专家");
+        return ;
+    }
     var xmlHttp = get();
     var ids = "";
     for(var i = 0; i < toBes.length; i++){
@@ -289,7 +309,11 @@ function notBeExpert() {
 
     xmlHttp.onreadystatechange = function(){
         if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
-            alert("已取消专家身份");
+            var result = xmlHttp.responseText;
+            if(result != "")
+                alert(result);
+            else
+                alert("已取消专家身份");
             selectAllCheck();
         }
     };
